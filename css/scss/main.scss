@@ -1,0 +1,127 @@
+// =============================================
+// ARCHIVO PRINCIPAL - AGENDAPRO TEMA BLANCO
+// =============================================
+
+// Abstracts
+@import 'abstracts/variables';
+@import 'abstracts/mixins';
+@import 'abstracts/functions';
+
+// Base
+@import 'base/reset';
+@import 'base/typography';
+
+// Components
+@import 'components/buttons';
+@import 'components/cards';
+@import 'components/forms';
+@import 'components/navbar';
+@import 'components/modals';
+
+// Layout
+@import 'layout/calendar';
+@import 'layout/services';
+@import 'layout/grid';
+
+// Pages
+@import 'pages/dashboard';
+
+// =============================================
+// ESTILOS GLOBALES - TEMA BLANCO
+// =============================================
+
+body.agenda-pro {
+    // Asegurar que los estilos se apliquen con alta especificidad
+    .text-primary {
+        color: $primary !important;
+    }
+    
+    .text-success {
+        color: $success !important;
+    }
+    
+    .text-warning {
+        color: $warning !important;
+    }
+    
+    .text-info {
+        color: $info !important;
+    }
+    
+    .text-muted {
+        color: $dark-lighter !important;
+    }
+    
+    .bg-light {
+        background: $white-dark !important;
+    }
+    
+    .border {
+        border-color: $border-color-light !important;
+    }
+    
+    .progress {
+        background: $white-darker !important;
+        
+        .progress-bar {
+            @include gold-gradient-light;
+        }
+    }
+    
+    .alert {
+        @include elegant-border-light;
+        background: $white;
+        
+        &.alert-info {
+            border-left: 4px solid $info;
+            background: $info-light;
+            color: $dark;
+        }
+        
+        &.alert-success {
+            border-left: 4px solid $success;
+            background: $success-light;
+            color: $dark;
+        }
+        
+        &.alert-warning {
+            border-left: 4px solid $warning;
+            background: $warning-light;
+            color: $dark;
+        }
+        
+        &.alert-danger {
+            border-left: 4px solid $danger;
+            background: $danger-light;
+            color: $dark;
+        }
+    }
+}
+
+// Utilidades de animación
+.fade-in-up {
+    @include fade-in-up;
+}
+
+.gold-glow {
+    @include gold-glow-subtle;
+}
+
+.gold-pulse {
+    @include gold-pulse-subtle;
+}
+
+// Responsive improvements
+@include respond-to(sm) {
+    .btn-group {
+        flex-direction: column;
+        
+        .btn {
+            margin-bottom: $spacer-sm;
+            
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+    }
+}

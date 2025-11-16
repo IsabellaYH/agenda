@@ -1,618 +1,747 @@
-/* Sistema de diseño - AgendaPro */
+/* =============================================
+ * AGENDAPRO - TEMA ELEGANTE NEGRO Y DORADO
+ * CSS COMPILADO DESDE SCSS
+ * ============================================= */
+
+/* Variables CSS sobrescritas - FORZAR TEMA NEGRO */
 :root {
-    --color-primario: #2d4cc8;
-    --color-primario-oscuro: #1e3a8a;
-    --color-secundario: #8b5cf6;
-    --color-exito: #10b981;
-    --color-peligro: #ef4444;
-    --color-advertencia: #f59e0b;
-    --color-fondo: #f8fafc;
-    --color-superficie: #ffffff;
-    --color-texto: #1e293b;
-    --color-texto-secundario: #64748b;
-    --color-borde: #e2e8f0;
-    --color-sombra: rgba(0, 0, 0, 0.08);
-    --radio-borde: 12px;
-    --transicion-rapida: 0.2s ease;
-    --transicion-suave: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
-    background: linear-gradient(135deg, #f0f4ff 0%, #e6f0ff 100%);
-    color: var(--color-texto);
-    line-height: 1.6;
-    min-height: 100vh;
-    padding: 20px;
-}
-
-.contenedor-principal {
-    max-width: 1400px;
-    margin: 0 auto;
-}
-
-/* Cabecera */
-.cabecera {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: var(--color-superficie);
-    padding: 24px 32px;
-    border-radius: var(--radio-borde);
-    box-shadow: 0 4px 20px var(--color-sombra);
-    margin-bottom: 24px;
-    border: 1px solid var(--color-borde);
-}
-
-.logo {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-}
-
-.icono-logo {
-    width: 48px;
-    height: 48px;
-    background: linear-gradient(135deg, var(--color-primario), var(--color-secundario));
-    border-radius: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    font-size: 1.5rem;
+  --bs-primary: #D4AF37 !important;
+  --bs-primary-rgb: 212, 175, 55 !important;
+  --bs-secondary: #2C2C2C !important;
+  --bs-secondary-rgb: 44, 44, 44 !important;
+  --bs-dark: #1A1A1A !important;
+  --bs-dark-rgb: 26, 26, 26 !important;
+  --bs-light: #F8F9FA !important;
+  --bs-light-rgb: 248, 249, 250 !important;
+  --bs-success: #28a745 !important;
+  --bs-danger: #dc3545 !important;
+  --bs-warning: #ffc107 !important;
+  --bs-info: #17a2b8 !important;
+  --bs-body-bg: #1A1A1A !important;
+  --bs-body-color: #F8F9FA !important;
 }
 
-.texto-logo h1 {
-    font-size: 1.75rem;
-    font-weight: 700;
-    color: var(--color-primario);
-    margin-bottom: 2px;
+/* ESTILOS GLOBALES - FONDO NEGRO */
+body.agenda-pro {
+  background: linear-gradient(135deg, #1A1A1A, #2C2C2C) !important;
+  color: #F8F9FA !important;
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  min-height: 100vh;
 }
 
-.texto-logo p {
-    color: var(--color-texto-secundario);
-    font-size: 0.9rem;
-}
-
-.estadisticas {
-    display: flex;
-    gap: 32px;
-}
-
-.estadistica {
-    text-align: center;
-}
-
-.numero {
-    display: block;
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: var(--color-primario);
-}
-
-.texto {
-    font-size: 0.85rem;
-    color: var(--color-texto-secundario);
-}
+/* ========== SOBRESCRIBIR BOOTSTRAP COMPLETAMENTE ========== */
 
-/* Layout principal */
-.contenido-principal {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 24px;
-    margin-bottom: 24px;
-}
+/* Backgrounds */
+body.agenda-pro .bg-primary {
+  background: linear-gradient(135deg, #1A1A1A, #2a2a2a) !important;
+  color: #F8F9FA !important;
+}
+
+body.agenda-pro .bg-white {
+  background: #2C2C2C !important;
+  color: #F8F9FA !important;
+}
+
+body.agenda-pro .bg-light {
+  background: #2C2C2C !important;
+  color: #F8F9FA !important;
+}
+
+/* Text colors */
+body.agenda-pro .text-primary {
+  color: #D4AF37 !important;
+}
+
+body.agenda-pro .text-muted {
+  color: rgba(248, 249, 250, 0.6) !important;
+}
+
+body.agenda-pro .text-dark {
+  color: #F8F9FA !important;
+}
+
+/* Cards */
+body.agenda-pro .card {
+  background: #2C2C2C !important;
+  color: #F8F9FA !important;
+  border: 1px solid rgba(212, 175, 55, 0.3) !important;
+}
+
+body.agenda-pro .card-header.bg-white {
+  background: rgba(26, 26, 26, 0.9) !important;
+  color: #D4AF37 !important;
+  border-bottom: 1px solid rgba(212, 175, 55, 0.3) !important;
+}
+
+body.agenda-pro .card-body {
+  background: #2C2C2C !important;
+  color: #F8F9FA !important;
+}
+
+/* Buttons */
+body.agenda-pro .btn-light {
+  background: rgba(26, 26, 26, 0.7) !important;
+  color: #F8F9FA !important;
+  border: 1px solid rgba(212, 175, 55, 0.3) !important;
+}
+
+body.agenda-pro .btn-outline-secondary {
+  border: 2px solid #6c757d !important;
+  color: #6c757d !important;
+  background: transparent !important;
+}
+
+body.agenda-pro .btn-outline-secondary:hover {
+  background: #6c757d !important;
+  color: #F8F9FA !important;
+}
+
+/* ========== NAVBAR ========== */
+body.agenda-pro .navbar.bg-primary {
+  background: linear-gradient(135deg, #1A1A1A, #2a2a2a) !important;
+  border-bottom: 2px solid #D4AF37 !important;
+  box-shadow: 0 2px 20px rgba(212, 175, 55, 0.15) !important;
+}
+
+body.agenda-pro .navbar.bg-primary .navbar-brand {
+  font-size: 1.5rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, #D4AF37, #F5E6A3);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  transition: transform 0.3s ease;
+}
+
+body.agenda-pro .navbar.bg-primary .navbar-brand:hover {
+  transform: scale(1.05);
+}
+
+body.agenda-pro .navbar.bg-primary .badge.bg-light {
+  background: linear-gradient(135deg, #D4AF37, #B8860B) !important;
+  color: #1A1A1A !important;
+  border: none !important;
+  font-weight: 600;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+body.agenda-pro .navbar.bg-primary .badge.bg-light::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.6s;
+}
+
+body.agenda-pro .navbar.bg-primary .badge.bg-light:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
+}
+
+body.agenda-pro .navbar.bg-primary .badge.bg-light:hover::before {
+  left: 100%;
+}
+
+body.agenda-pro .navbar.bg-primary .btn-outline-light {
+  border: 2px solid #D4AF37 !important;
+  color: #D4AF37 !important;
+  background: transparent !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+body.agenda-pro .navbar.bg-primary .btn-outline-light::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.6s;
+}
+
+body.agenda-pro .navbar.bg-primary .btn-outline-light:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
+  background: #D4AF37 !important;
+  color: #1A1A1A !important;
+}
+
+body.agenda-pro .navbar.bg-primary .btn-outline-light:hover::before {
+  left: 100%;
+}
+
+/* ========== BOTONES ========== */
+body.agenda-pro .btn {
+  font-weight: 600;
+  border: none;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+body.agenda-pro .btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.6s;
+}
+
+body.agenda-pro .btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
+}
 
-@media (max-width: 1024px) {
-    .contenido-principal {
-        grid-template-columns: 1fr;
-    }
-    
-    .cabecera {
-        flex-direction: column;
-        gap: 20px;
-        text-align: center;
-    }
-    
-    .estadisticas {
-        gap: 20px;
-    }
-}
-
-/* Tarjetas */
-.tarjeta {
-    background: var(--color-superficie);
-    border-radius: var(--radio-borde);
-    box-shadow: 0 4px 20px var(--color-sombra);
-    border: 1px solid var(--color-borde);
-    overflow: hidden;
-    transition: var(--transicion-suave);
-}
+body.agenda-pro .btn:hover::before {
+  left: 100%;
+}
+
+body.agenda-pro .btn:active {
+  transform: translateY(0);
+  transition: transform 0.1s;
+}
+
+/* Botón Primary */
+body.agenda-pro .btn.btn-primary {
+  background: linear-gradient(135deg, #D4AF37, #B8860B) !important;
+  color: #1A1A1A !important;
+  border: none !important;
+}
+
+/* Botón Outline Primary */
+body.agenda-pro .btn.btn-outline-primary {
+  border: 2px solid #D4AF37 !important;
+  color: #D4AF37 !important;
+  background: transparent !important;
+}
+
+body.agenda-pro .btn.btn-outline-primary:hover,
+body.agenda-pro .btn.btn-outline-primary.active {
+  background: linear-gradient(135deg, #D4AF37, #B8860B) !important;
+  color: #1A1A1A !important;
+}
 
-.tarjeta:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 30px var(--color-sombra);
+/* Botón Success */
+body.agenda-pro .btn.btn-success {
+  background: linear-gradient(135deg, #28a745, #1e7e34) !important;
+  color: white !important;
 }
 
-/* Calendario */
-.calendario {
-    padding: 24px;
+/* Botón Outline Danger */
+body.agenda-pro .btn.btn-outline-danger {
+  border: 2px solid #dc3545 !important;
+  color: #dc3545 !important;
+  background: transparent !important;
 }
 
-.cabecera-calendario {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
+body.agenda-pro .btn.btn-outline-danger:hover {
+  background: #dc3545 !important;
+  color: white !important;
 }
 
-.cabecera-calendario h2 {
-    color: var(--color-primario);
-    font-size: 1.25rem;
-    display: flex;
-    align-items: center;
-    gap: 8px;
+/* Botón Light */
+body.agenda-pro .btn.btn-light {
+  background: rgba(26, 26, 26, 0.7) !important;
+  color: #F8F9FA !important;
+  border: 1px solid rgba(212, 175, 55, 0.3) !important;
 }
 
-.navegacion-calendario {
-    display: flex;
-    align-items: center;
-    gap: 12px;
+/* ========== CARDS ========== */
+body.agenda-pro .card {
+  background: #2C2C2C !important;
+  color: #F8F9FA !important;
+  border: none !important;
+  border: 1px solid rgba(212, 175, 55, 0.3) !important;
+  transition: all 0.3s ease;
 }
 
-.mes-actual {
-    font-weight: 600;
-    color: var(--color-texto);
-    min-width: 120px;
-    text-align: center;
+body.agenda-pro .card:hover {
+  transform: translateY(-0.25rem);
+  box-shadow: 0 0.5rem 1.5rem rgba(212, 175, 55, 0.2);
 }
 
-.btn-navegacion {
-    width: 36px;
-    height: 36px;
-    border: 1px solid var(--color-borde);
-    background: var(--color-fondo);
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: var(--transicion-rapida);
-    color: var(--color-texto);
+body.agenda-pro .card .card-header {
+  background: rgba(26, 26, 26, 0.9) !important;
+  border-bottom: 1px solid rgba(212, 175, 55, 0.3) !important;
+  color: #D4AF37 !important;
 }
 
-.btn-navegacion:hover {
-    background: var(--color-primario);
-    color: white;
-    border-color: var(--color-primario);
+body.agenda-pro .card .card-header .card-title {
+  color: #D4AF37 !important;
+  margin: 0;
 }
 
-.dias-semana {
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    gap: 4px;
-    margin-bottom: 12px;
+body.agenda-pro .card .card-body {
+  background: #2C2C2C !important;
 }
 
-.dias-semana div {
-    text-align: center;
-    font-weight: 600;
-    color: var(--color-primario);
-    padding: 8px 0;
-    font-size: 0.85rem;
+/* ========== CALENDARIO ========== */
+body.agenda-pro .calendar-weekdays .col {
+  color: #D4AF37 !important;
+  font-weight: 600;
+  padding: 0.5rem;
+  text-align: center;
+  background: rgba(26, 26, 26, 0.8) !important;
+  border-bottom: 2px solid #D4AF37 !important;
 }
 
-.dias-mes {
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    gap: 4px;
+body.agenda-pro #dias-calendario .dia-calendario {
+  aspect-ratio: 1;
+  border: 1px solid rgba(212, 175, 55, 0.3) !important;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  background: rgba(26, 26, 26, 0.7) !important;
+  color: #F8F9FA !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
 }
 
-.dia {
-    aspect-ratio: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: var(--transicion-rapida);
-    font-weight: 500;
-    position: relative;
+body.agenda-pro #dias-calendario .dia-calendario:hover {
+  background: rgba(212, 175, 55, 0.1) !important;
+  border-color: #D4AF37 !important;
+  transform: scale(1.05);
 }
 
-.dia:hover {
-    background: var(--color-fondo);
+body.agenda-pro #dias-calendario .dia-calendario.mes-actual {
+  background: rgba(44, 44, 44, 0.8) !important;
 }
 
-.dia.seleccionado {
-    background: var(--color-primario);
-    color: white;
+body.agenda-pro #dias-calendario .dia-calendario.otro-mes {
+  background: rgba(26, 26, 26, 0.5) !important;
+  color: rgba(248, 249, 250, 0.5) !important;
 }
 
-.dia.actual {
-    background: var(--color-exito);
-    color: white;
+body.agenda-pro #dias-calendario .dia-calendario.hoy {
+  background: rgba(212, 175, 55, 0.2) !important;
+  border-color: #D4AF37 !important;
+  color: #F5E6A3 !important;
+  font-weight: bold;
+  animation: pulse-gold 2s infinite;
 }
 
-.dia.con-servicio::after {
-    content: '';
-    position: absolute;
-    bottom: 4px;
-    width: 4px;
-    height: 4px;
-    background: var(--color-exito);
-    border-radius: 50%;
+body.agenda-pro #dias-calendario .dia-calendario.seleccionado {
+  background: linear-gradient(135deg, #D4AF37, #B8860B) !important;
+  color: #1A1A1A !important;
+  border: none !important;
+  border-color: #D4AF37 !important;
+  font-weight: bold;
 }
 
-.dia.otro-mes {
-    color: var(--color-texto-secundario);
-    opacity: 0.5;
+body.agenda-pro #dias-calendario .dia-calendario.con-servicio::after {
+  content: '';
+  position: absolute;
+  bottom: 4px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 6px;
+  height: 6px;
+  background: #D4AF37 !important;
+  border-radius: 50%;
 }
 
-/* Formulario */
-.formulario-servicio {
-    padding: 24px;
+body.agenda-pro #dias-calendario .dia-calendario .numero-dia {
+  font-size: 0.875rem;
+  font-weight: 500;
 }
 
-.formulario-servicio h2 {
-    color: var(--color-primario);
-    margin-bottom: 20px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
+body.agenda-pro #dias-calendario .dia-calendario .contador-servicios {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  background: #D4AF37 !important;
+  color: #1A1A1A !important;
+  border-radius: 50%;
+  width: 18px;
+  height: 18px;
+  font-size: 0.7rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
 }
 
-.grupo-campos {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 16px;
+/* ========== FORMULARIOS ========== */
+body.agenda-pro .form-control,
+body.agenda-pro .form-select {
+  background: rgba(26, 26, 26, 0.7) !important;
+  border: 1px solid rgba(212, 175, 55, 0.3) !important;
+  color: #F8F9FA !important;
+  transition: all 0.3s ease;
 }
 
-.campo {
-    margin-bottom: 20px;
+body.agenda-pro .form-control:focus,
+body.agenda-pro .form-select:focus {
+  background: rgba(26, 26, 26, 0.9) !important;
+  border-color: #D4AF37 !important;
+  box-shadow: 0 0 0 0.2rem rgba(212, 175, 55, 0.25) !important;
+  color: #F8F9FA !important;
+  transform: translateY(-1px);
 }
 
-.campo label {
-    display: block;
-    margin-bottom: 6px;
-    font-weight: 600;
-    color: var(--color-texto);
-    font-size: 0.9rem;
+body.agenda-pro .form-control::placeholder,
+body.agenda-pro .form-select::placeholder {
+  color: rgba(248, 249, 250, 0.6) !important;
 }
 
-.campo input,
-.campo select,
-.campo textarea {
-    width: 100%;
-    padding: 12px 16px;
-    border: 1.5px solid var(--color-borde);
-    border-radius: 8px;
-    font-size: 0.95rem;
-    transition: var(--transicion-rapida);
-    background: var(--color-superficie);
+body.agenda-pro .input-group-text {
+  background: rgba(212, 175, 55, 0.1) !important;
+  border: 1px solid rgba(212, 175, 55, 0.3) !important;
+  color: #D4AF37 !important;
 }
 
-.campo input:focus,
-.campo select:focus,
-.campo textarea:focus {
-    outline: none;
-    border-color: var(--color-primario);
-    box-shadow: 0 0 0 3px rgba(45, 76, 200, 0.1);
+body.agenda-pro .form-label {
+  color: #F8F9FA !important;
+  font-weight: 600;
 }
 
-.input-con-icono {
-    position: relative;
+body.agenda-pro .form-check-input:checked {
+  background-color: #D4AF37 !important;
+  border-color: #D4AF37 !important;
 }
 
-.input-con-icono i {
-    position: absolute;
-    left: 16px;
-    top: 50%;
-    transform: translateY(-50%);
-    color: var(--color-texto-secundario);
+body.agenda-pro .form-check-input:focus {
+  border-color: #D4AF37 !important;
+  box-shadow: 0 0 0 0.2rem rgba(212, 175, 55, 0.25) !important;
 }
 
-.input-con-icono input {
-    padding-left: 44px;
+/* ========== BADGES ========== */
+body.agenda-pro .badge.bg-primary {
+  background: linear-gradient(135deg, #D4AF37, #B8860B) !important;
+  color: #1A1A1A !important;
+  border: none !important;
 }
 
-.campo textarea {
-    min-height: 80px;
-    resize: vertical;
-    font-family: inherit;
+body.agenda-pro .badge.bg-success {
+  background: linear-gradient(135deg, #28a745, #1e7e34) !important;
 }
 
-/* Botones */
-.btn-principal {
-    width: 100%;
-    padding: 14px 24px;
-    background: linear-gradient(135deg, var(--color-primario), var(--color-secundario));
-    color: white;
-    border: none;
-    border-radius: 8px;
-    font-size: 1rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: var(--transicion-suave);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
+body.agenda-pro .badge.bg-warning {
+  background: linear-gradient(135deg, #ffc107, #e0a800) !important;
+  color: #000 !important;
 }
 
-.btn-principal:hover {
-    transform: translateY(-1px);
-    box-shadow: 0 6px 20px rgba(45, 76, 200, 0.3);
+/* ========== SERVICIOS ========== */
+body.agenda-pro .servicio-item {
+  background: rgba(26, 26, 26, 0.8) !important;
+  border: 1px solid rgba(212, 175, 55, 0.3) !important;
+  transition: all 0.3s ease;
+  border-left: 4px solid #D4AF37 !important;
+  padding: 1.25rem;
+  margin-bottom: 1rem;
+  border-radius: 8px;
+  position: relative;
 }
 
-/* Lista de servicios */
-.lista-servicios {
-    padding: 24px;
-    height: fit-content;
+body.agenda-pro .servicio-item:hover {
+  transform: translateY(-0.25rem);
+  box-shadow: 0 0.5rem 1.5rem rgba(212, 175, 55, 0.2);
 }
 
-.cabecera-lista {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
+body.agenda-pro .servicio-item .encabezado-servicio {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 0.75rem;
 }
 
-.cabecera-lista h2 {
-    color: var(--color-primario);
-    display: flex;
-    align-items: center;
-    gap: 8px;
+body.agenda-pro .servicio-item .encabezado-servicio h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #D4AF37 !important;
+  margin-bottom: 0.25rem;
 }
 
-.contador {
-    background: var(--color-primario);
-    color: white;
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 0.85rem;
-    font-weight: 600;
+body.agenda-pro .servicio-item .encabezado-servicio .etiqueta-servicio {
+  background: linear-gradient(135deg, #D4AF37, #B8860B) !important;
+  color: #1A1A1A !important;
+  border: none !important;
+  padding: 0.25rem 0.75rem;
+  border-radius: 1rem;
+  font-size: 0.75rem;
+  font-weight: 600;
 }
 
-.filtros {
-    display: flex;
-    gap: 12px;
-    margin-bottom: 20px;
-    flex-wrap: wrap;
+body.agenda-pro .servicio-item .detalle-servicio {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+  color: rgba(248, 249, 250, 0.8) !important;
 }
 
-.btn-filtro {
-    padding: 10px 16px;
-    border: 1.5px solid var(--color-borde);
-    background: var(--color-fondo);
-    border-radius: 8px;
-    cursor: pointer;
-    transition: var(--transicion-rapida);
-    font-size: 0.9rem;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    color: var(--color-texto);
+body.agenda-pro .servicio-item .detalle-servicio i {
+  width: 1rem;
+  margin-right: 0.5rem;
+  color: #D4AF37 !important;
 }
 
-.btn-filtro:hover {
-    border-color: var(--color-primario);
-    color: var(--color-primario);
+body.agenda-pro .servicio-item .btn-eliminar {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  color: rgba(248, 249, 250, 0.6) !important;
+  cursor: pointer;
+  padding: 0.25rem;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
 }
 
-.btn-filtro.activo {
-    background: var(--color-primario);
-    color: white;
-    border-color: var(--color-primario);
+body.agenda-pro .servicio-item .btn-eliminar::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.6s;
 }
 
-.btn-filtro.peligro {
-    color: var(--color-peligro);
-    border-color: var(--color-peligro);
+body.agenda-pro .servicio-item .btn-eliminar:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
+  color: #dc3545 !important;
+  background: rgba(220, 53, 69, 0.1) !important;
 }
 
-.btn-filtro.peligro:hover {
-    background: var(--color-peligro);
-    color: white;
+body.agenda-pro .servicio-item .btn-eliminar:hover::before {
+  left: 100%;
 }
 
-.contenedor-resultados {
-    min-height: 400px;
-    max-height: 600px;
-    overflow-y: auto;
+/* ========== MODALES ========== */
+body.agenda-pro .modal-content {
+  background: #2C2C2C !important;
+  color: #F8F9FA !important;
+  border: 1px solid rgba(212, 175, 55, 0.3) !important;
 }
 
-/* Servicios */
-.servicio {
-    background: var(--color-fondo);
-    border-left: 4px solid var(--color-primario);
-    padding: 20px;
-    margin-bottom: 16px;
-    border-radius: 8px;
-    transition: var(--transicion-suave);
-    position: relative;
+body.agenda-pro .modal-content .modal-header {
+  background: rgba(26, 26, 26, 0.9) !important;
+  border-bottom: 1px solid rgba(212, 175, 55, 0.3) !important;
+  color: #D4AF37 !important;
 }
 
-.servicio:hover {
-    transform: translateX(4px);
-    box-shadow: 0 4px 12px var(--color-sombra);
+body.agenda-pro .modal-content .modal-header .btn-close {
+  filter: invert(1) brightness(2) !important;
 }
 
-.encabezado-servicio {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    margin-bottom: 12px;
+/* ========== ALERTS ========== */
+body.agenda-pro .alert-info {
+  background: rgba(23, 162, 184, 0.1) !important;
+  border: 1px solid rgba(23, 162, 184, 0.3) !important;
+  color: #F8F9FA !important;
+  border-left: 4px solid #17a2b8 !important;
 }
 
-.encabezado-servicio h3 {
-    color: var(--color-primario);
-    font-size: 1.1rem;
+/* ========== ANIMACIONES ========== */
+@keyframes pulse-gold {
+  0%, 100% {
+    box-shadow: 0 0 5px rgba(212, 175, 55, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.8);
+  }
 }
 
-.etiqueta-servicio {
-    background: var(--color-secundario);
-    color: white;
-    padding: 4px 12px;
-    border-radius: 20px;
-    font-size: 0.8rem;
-    font-weight: 600;
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(1rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-.detalle-servicio {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    margin-bottom: 6px;
-    color: var(--color-texto);
-    font-size: 0.9rem;
+body.agenda-pro .fade-in-up {
+  animation: fadeInUp 0.5s ease-out;
 }
 
-.detalle-servicio i {
-    color: var(--color-texto-secundario);
-    width: 16px;
+/* ========== SCROLLBAR ========== */
+body.agenda-pro .servicios-container::-webkit-scrollbar {
+  width: 6px;
 }
 
-.btn-eliminar {
-    position: absolute;
-    top: 16px;
-    right: 16px;
-    background: none;
-    border: none;
-    color: var(--color-texto-secundario);
-    cursor: pointer;
-    padding: 4px;
-    border-radius: 4px;
-    transition: var(--transicion-rapida);
+body.agenda-pro .servicios-container::-webkit-scrollbar-track {
+  background: rgba(26, 26, 26, 0.5);
+  border-radius: 3px;
 }
 
-.btn-eliminar:hover {
-    color: var(--color-peligro);
-    background: rgba(239, 68, 68, 0.1);
+body.agenda-pro .servicios-container::-webkit-scrollbar-thumb {
+  background: #D4AF37;
+  border-radius: 3px;
 }
 
-/* Estados */
-.estado-vacio {
-    text-align: center;
-    padding: 60px 20px;
-    color: var(--color-texto-secundario);
+body.agenda-pro .servicios-container::-webkit-scrollbar-thumb:hover {
+  background: #F5E6A3;
 }
 
-.icono-vacio {
-    font-size: 3rem;
-    color: var(--color-borde);
-    margin-bottom: 16px;
+/* ========== SISTEMA DE PAGOS ========== */
+.modal-pago-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
 }
 
-.mensaje {
-    padding: 20px;
-    border-radius: 8px;
-    margin-bottom: 16px;
-    text-align: center;
+.modal-pago-content {
+  background: #2C2C2C;
+  border: 2px solid #D4AF37;
+  border-radius: 12px;
+  padding: 2rem;
+  max-width: 500px;
+  width: 90%;
+  color: #F8F9FA;
+  text-align: center;
 }
 
-.mensaje.exito {
-    background: rgba(16, 185, 129, 0.1);
-    color: var(--color-exito);
-    border: 1px solid rgba(16, 185, 129, 0.2);
+.modal-pago-header i {
+  animation: pulse-gold 2s infinite;
 }
 
-.mensaje.error {
-    background: rgba(239, 68, 68, 0.1);
-    color: var(--color-peligro);
-    border: 1px solid rgba(239, 68, 68, 0.2);
+.modal-pago-info {
+  border-left: 4px solid #D4AF37;
 }
 
-.mensaje.info {
-    background: rgba(45, 76, 200, 0.1);
-    color: var(--color-primario);
-    border: 1px solid rgba(45, 76, 200, 0.2);
+.btn-confirmar-pago,
+.btn-cancelar-pago {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
 }
 
-/* footer */
-.pie-pagina {
-    background: var(--color-superficie);
-    padding: 20px 32px;
-    border-radius: var(--radio-borde);
-    box-shadow: 0 4px 20px var(--color-sombra);
-    border: 1px solid var(--color-borde);
+.btn-confirmar-pago::before,
+.btn-cancelar-pago::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.6s;
 }
 
-.info-footer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    color: var(--color-texto-secundario);
-    font-size: 0.9rem;
+.btn-confirmar-pago:hover,
+.btn-cancelar-pago:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
 }
 
-.estado-sistema {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    color: var(--color-exito);
+.btn-confirmar-pago:hover::before,
+.btn-cancelar-pago:hover::before {
+  left: 100%;
 }
 
-/* Scrollbar personalizado */
-.contenedor-resultados::-webkit-scrollbar {
-    width: 6px;
+/* ========== UTILIDADES ========== */
+.bg-gradient-gold {
+  background: linear-gradient(135deg, #D4AF37, #B8860B) !important;
+  color: #1A1A1A !important;
+  border: none !important;
+}
+
+.text-gold {
+  color: #D4AF37 !important;
+}
+
+.border-gold {
+  border-color: #D4AF37 !important;
+}
+
+/* ========== RESPONSIVE ========== */
+@media (max-width: 767.98px) {
+  body.agenda-pro #dias-calendario .dia-calendario .numero-dia {
+    font-size: 0.75rem;
+  }
+  
+  body.agenda-pro .servicio-item .encabezado-servicio {
+    flex-direction: column;
+    align-items: flex-start !important;
+  }
+  
+  body.agenda-pro .servicio-item .encabezado-servicio .etiqueta-servicio {
+    margin-top: 0.5rem;
+  }
+  
+  body.agenda-pro .btn-group {
+    flex-direction: column;
+  }
+  
+  body.agenda-pro .btn-group .btn {
+    margin-bottom: 0.5rem;
+  }
+}
+
+@media (max-width: 991.98px) {
+  body.agenda-pro .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
+/* ========== CORRECCIONES GRID CALENDARIO ========== */
+body.agenda-pro #dias-calendario {
+    display: grid !important;
+    grid-template-columns: repeat(7, 1fr) !important;
+    gap: 4px !important;
+    margin: 0 !important;
 }
 
-.contenedor-resultados::-webkit-scrollbar-track {
-    background: var(--color-fondo);
-    border-radius: 3px;
+body.agenda-pro #dias-calendario .dia-calendario {
+    min-height: 60px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    flex-direction: column !important;
+    position: relative !important;
 }
 
-.contenedor-resultados::-webkit-scrollbar-thumb {
-    background: var(--color-borde);
-    border-radius: 3px;
+/* Asegurar que los días de la semana también usen grid */
+body.agenda-pro .calendar-weekdays {
+    display: grid !important;
+    grid-template-columns: repeat(7, 1fr) !important;
+    gap: 4px !important;
+    margin-bottom: 8px !important;
 }
 
-.contenedor-resultados::-webkit-scrollbar-thumb:hover {
-    background: var(--color-texto-secundario);
+body.agenda-pro .calendar-weekdays .col {
+    text-align: center !important;
+    padding: 8px 4px !important;
 }
 
 /* Responsive */
 @media (max-width: 768px) {
-    body {
-        padding: 12px;
+    body.agenda-pro #dias-calendario .dia-calendario {
+        min-height: 50px !important;
+        font-size: 0.8rem !important;
     }
     
-    .cabecera {
-        padding: 20px;
-    }
-    
-    .contenido-principal {
-        gap: 16px;
-    }
-    
-    .calendario,
-    .formulario-servicio,
-    .lista-servicios {
-        padding: 20px;
-    }
-    
-    .grupo-campos {
-        grid-template-columns: 1fr;
-    }
-    
-    .filtros {
-        flex-direction: column;
-    }
-    
-    .info-footer {
-        flex-direction: column;
-        gap: 12px;
-        text-align: center;
+    body.agenda-pro .calendar-weekdays .col {
+        font-size: 0.75rem !important;
+        padding: 6px 2px !important;
     }
 }

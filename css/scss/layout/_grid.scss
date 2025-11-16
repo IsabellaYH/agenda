@@ -1,0 +1,28 @@
+// =============================================
+// LAYOUT: GRID SYSTEM
+// =============================================
+
+.container {
+    @include respond-to(lg) {
+        padding-left: $spacer;
+        padding-right: $spacer;
+    }
+}
+
+.row {
+    margin-left: -$spacer-sm;
+    margin-right: -$spacer-sm;
+    
+    > [class*="col-"] {
+        padding-left: $spacer-sm;
+        padding-right: $spacer-sm;
+    }
+}
+
+// Espaciados responsive
+@include respond-to(md) {
+    .container {
+        padding-left: $spacer-sm;
+        padding-right: $spacer-sm;
+    }
+}

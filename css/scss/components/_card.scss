@@ -1,0 +1,65 @@
+// =============================================
+// COMPONENTE: CARDS - TEMA BLANCO
+// =============================================
+
+.card {
+    background: $white !important;
+    color: $dark !important;
+    @include elegant-border-light;
+    @include card-hover;
+
+    .card-header {
+        background: $white-dark !important;
+        @include elegant-border-light;
+        border-bottom: $border-width solid $border-color-light !important;
+        color: $primary !important;
+        font-weight: $font-weight-semibold;
+
+        .card-title {
+            color: $primary !important;
+            margin: 0;
+            
+            .text-primary {
+                color: $primary !important;
+            }
+        }
+    }
+
+    .card-body {
+        background: $white !important;
+        padding: $spacer-lg;
+    }
+
+    .card-footer {
+        background: $white-dark !important;
+        @include elegant-border-light;
+        border-top: $border-width solid $border-color-light !important;
+        padding: $spacer $spacer-lg;
+    }
+
+    // Variantes de color
+    &.bg-primary {
+        @include gold-gradient-light;
+    }
+    
+    &.bg-success {
+        background: $gradient-success !important;
+        color: $white !important;
+        @include elegant-border(darken($success, 10%));
+    }
+    
+    &.bg-info {
+        background: linear-gradient(135deg, $info, darken($info, 10%)) !important;
+        color: $white !important;
+        @include elegant-border(darken($info, 10%));
+    }
+
+    // Cards con acento dorado
+    &.card-gold-accent {
+        border-left: 4px solid $primary;
+        
+        .card-header {
+            border-left: 4px solid $primary;
+        }
+    }
+}

@@ -1,0 +1,102 @@
+// =============================================
+// LAYOUT: CALENDARIO - TEMA BLANCO
+// =============================================
+
+.calendar-weekdays {
+    .col {
+        color: $primary !important;
+        font-weight: $font-weight-semibold;
+        padding: $spacer-sm;
+        text-align: center;
+        font-size: 0.875rem;
+        @include elegant-border-light;
+        background: $white-dark;
+        border-bottom: $border-width-thick solid $primary-30;
+    }
+}
+
+#dias-calendario {
+    .dia-calendario {
+        aspect-ratio: 1;
+        @include elegant-border-light;
+        cursor: pointer;
+        transition: all $transition-base;
+        position: relative;
+        background: $white !important;
+        color: $dark !important;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: $border-radius-sm;
+
+        &:hover {
+            background: $primary-10 !important;
+            border-color: $primary-50 !important;
+            transform: scale(1.05);
+            @include gold-glow-subtle;
+        }
+
+        &.mes-actual {
+            background: $white !important;
+        }
+
+        &.otro-mes {
+            background: $white-darker !important;
+            color: $dark-disabled !important;
+        }
+
+        &.hoy {
+            background: $primary-15 !important;
+            border-color: $primary !important;
+            color: $primary-dark !important;
+            font-weight: $font-weight-bold;
+            @include gold-pulse-subtle;
+        }
+
+        &.seleccionado {
+            @include gold-gradient-light;
+            border-color: $primary !important;
+            font-weight: $font-weight-bold;
+        }
+
+        &.con-servicio {
+            &::after {
+                content: '';
+                position: absolute;
+                bottom: 4px;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 6px;
+                height: 6px;
+                background: $primary !important;
+                border-radius: 50%;
+            }
+        }
+
+        .numero-dia {
+            font-size: 0.875rem;
+            font-weight: $font-weight-medium;
+        }
+
+        .contador-servicios {
+            position: absolute;
+            top: 4px;
+            right: 4px;
+            @include gold-gradient-light;
+            border-radius: 50%;
+            width: 18px;
+            height: 18px;
+            font-size: 0.7rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: $font-weight-semibold;
+        }
+    }
+    
+    @include respond-to(sm) {
+        .dia-calendario .numero-dia {
+            font-size: 0.75rem;
+        }
+    }
+}

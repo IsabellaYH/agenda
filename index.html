@@ -1,166 +1,268 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AgendaPro | Reserva tus servicios fácilmente</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="css/style.css">
+    <title>AgendaPro | Sistema Profesional de Gestión de Servicios</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <!-- NUESTRO CSS DEBE IR DESPUÉS de Bootstrap para sobrescribir -->
+    <link href="css/style.css" rel="stylesheet">
 </head>
+<body class="agenda-pro">
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top shadow">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="#">
+                <i class="fas fa-calendar-check me-2"></i>
+                AgendaPro
+            </a>
+            
+            <div class="d-flex align-items-center">
+                <span class="badge bg-light text-dark me-3" id="badge-servicios-hoy">0 hoy</span>
+                <button class="btn btn-outline-light btn-sm" data-bs-toggle="modal" data-bs-target="#estadisticasModal">
+                    <i class="fas fa-chart-bar me-1"></i>Estadísticas
+                </button>
+            </div>
+        </div>
+        <!-- Asegúrate de que el modal tenga la estructura correcta -->
+<div class="modal fade" id="modalEstadisticas" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Estadísticas</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <!-- Contenido de estadísticas -->
+            </div>
+        </div>
+    </div>
+</div>
+    </nav>
 
-<body>
-    <!-- Contenedor Principal -->
-    <div class="contenedor-principal">
-        <header class="cabecera">
-            <div class="logo">
-                <div class="icono-logo">
-                    <i class="fas fa-calendar-check"></i>
+    <!-- Main Content -->
+    <div class="container my-4">
+        <div class="row">
+            <!-- Panel Izquierdo -->
+            <div class="col-lg-8">
+                <!-- Calendario -->
+                <div class="card shadow-sm mb-4">
+                    <div class="card-header bg-white">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <h5 class="card-title mb-0 text-primary">
+                                <i class="fas fa-calendar-days me-2"></i>
+                                Calendario de Servicios
+                            </h5>
+                            <div class="btn-group">
+                                <button class="btn btn-outline-primary btn-sm" id="mes-anterior">
+                                    <i class="fas fa-chevron-left"></i>
+                                </button>
+                                <span class="btn btn-light" id="mes-actual">Febrero 2024</span>
+                                <button class="btn btn-outline-primary btn-sm" id="mes-siguiente">
+                                    <i class="fas fa-chevron-right"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="row mb-3">
+                            <div class="col-12">
+                                <div class="calendar-weekdays row g-1 text-center fw-bold small">
+                                    <div class="col p-2">Lun</div>
+                                    <div class="col p-2">Mar</div>
+                                    <div class="col p-2">Mié</div>
+                                    <div class="col p-2">Jue</div>
+                                    <div class="col p-2">Vie</div>
+                                    <div class="col p-2">Sáb</div>
+                                    <div class="col p-2">Dom</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row g-1" id="dias-calendario">
+                            <!-- Días generados dinámicamente -->
+                        </div>
+                    </div>
                 </div>
-                <div class="texto-logo">
-                    <h1>AgendaPro</h1>
-                    <p>Gestión inteligente de servicios</p>
+
+                <!-- Formulario de Servicio -->
+                <div class="card shadow-sm">
+                    <div class="card-header bg-white">
+                        <h5 class="card-title mb-0 text-primary">
+                            <i class="fas fa-circle-plus me-2"></i>
+                            Agendar Nuevo Servicio
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                        <form id="formulario-servicio">
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <label for="nombre-cliente" class="form-label">Nombre *</label>
+                                    <input type="text" class="form-control" id="nombre-cliente" placeholder="María" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="apellido-cliente" class="form-label">Apellido *</label>
+                                    <input type="text" class="form-control" id="apellido-cliente" placeholder="González" required>
+                                </div>
+                                
+                                <div class="col-12">
+                                    <label for="fecha-servicio" class="form-label">Fecha del Servicio *</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text">
+                                            <i class="fas fa-calendar-day"></i>
+                                        </span>
+                                        <input type="text" class="form-control" id="fecha-servicio" readonly 
+                                               placeholder="Selecciona una fecha en el calendario" required>
+                                    </div>
+                                </div>
+
+                                <div class="col-12">
+                                    <label for="tipo-servicio" class="form-label">Tipo de Servicio *</label>
+                                    <select class="form-select" id="tipo-servicio" required>
+                                        <option value="">Selecciona un servicio...</option>
+                                        <!-- Opciones cargadas dinámicamente desde services.json -->
+                                    </select>
+                                </div>
+
+                                <div class="col-12">
+                                    <label for="telefono-cliente" class="form-label">Teléfono</label>
+                                    <input type="tel" class="form-control" id="telefono-cliente" placeholder="+34 600 000 000">
+                                </div>
+
+                                <div class="col-12">
+                                    <label for="email-cliente" class="form-label">Email</label>
+                                    <input type="email" class="form-control" id="email-cliente" placeholder="cliente@email.com">
+                                </div>
+
+                                <div class="col-12">
+                                    <label for="detalles-servicio" class="form-label">Detalles Adicionales</label>
+                                    <textarea class="form-control" id="detalles-servicio" rows="3" 
+                                              placeholder="Notas importantes sobre el servicio, alergias, preferencias..."></textarea>
+                                </div>
+
+                                <div class="col-12">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="recordatorio-sms">
+                                        <label class="form-check-label" for="recordatorio-sms">
+                                            Enviar recordatorio por SMS
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div class="col-12">
+                                    <button type="submit" class="btn btn-primary w-100 py-3">
+                                        <i class="fas fa-calendar-plus me-2"></i>
+                                        Agendar Servicio
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
-            <div class="estadisticas">
-                <div class="estadistica">
-                    <span class="numero" id="total-servicios">0</span>
-                    <span class="texto">Servicios</span>
-                </div>
-                <div class="estadistica">
-                    <span class="numero" id="servicios-mes">0</span>
-                    <span class="texto">Este mes</span>
-                </div>
-            </div>
-        </header>
-        <!-- Calendario -->
-        <main class="contenido-principal">
-            <section class="panel-izquierdo">
-                <div class="tarjeta calendario">
-                    <div class="cabecera-calendario">
-                        <h2><i class="fas fa-calendar-days"></i> Calendario</h2>
-                        <div class="navegacion-calendario">
-                            <button id="mes-anterior" class="btn-navegacion">
-                                <i class="fas fa-chevron-left"></i>
+
+            <!-- Panel Derecho -->
+            <div class="col-lg-4">
+                <div class="card shadow-sm h-100">
+                    <div class="card-header bg-white d-flex justify-content-between align-items-center">
+                        <h5 class="card-title mb-0 text-primary">
+                            <i class="fas fa-list-check me-2"></i>
+                            Servicios Agendados
+                        </h5>
+                        <span class="badge bg-primary" id="contador-servicios">0</span>
+                    </div>
+                    <div class="card-body d-flex flex-column">
+                        <!-- Filtros -->
+                        <div class="btn-group w-100 mb-3" role="group">
+                            <button type="button" class="btn btn-outline-primary active" id="filtro-todos">
+                                Todos
                             </button>
-                            <span id="mes-actual" class="mes-actual">Febrero 2024</span>
-                            <button id="mes-siguiente" class="btn-navegacion">
-                                <i class="fas fa-chevron-right"></i>
+                            <button type="button" class="btn btn-outline-primary" id="filtro-hoy">
+                                Hoy
+                            </button>
+                            <button type="button" class="btn btn-outline-primary" id="filtro-semana">
+                                Esta Semana
                             </button>
                         </div>
-                    </div>
 
-                    <div class="dias-semana">
-                        <div>Lun</div>
-                        <div>Mar</div>
-                        <div>Mié</div>
-                        <div>Jue</div>
-                        <div>Vie</div>
-                        <div>Sáb</div>
-                        <div>Dom</div>
-                    </div>
-                    <div class="dias-mes" id="dias-calendario">
-                        <!-- Días generados dinámicamente -->
-                    </div>
-                </div>
-                <!-- Formulario para agendar nuevo servicio -->
-                <div class="tarjeta formulario-servicio">
-                    <h2><i class="fas fa-circle-plus"></i> Nuevo Servicio</h2>
-                    <form id="formulario-servicio" class="formulario">
-                        <div class="grupo-campos">
-                            <div class="campo">
-                                <label for="nombre-cliente">Nombre</label>
-                                <input type="text" id="nombre-cliente" placeholder="María" required>
-                            </div>
-                            <div class="campo">
-                                <label for="apellido-cliente">Apellido</label>
-                                <input type="text" id="apellido-cliente" placeholder="González" required>
-                            </div>
-                        </div>
-
-                        <div class="campo">
-                            <label for="fecha-servicio">Fecha del servicio</label>
-                            <div class="input-con-icono">
-                                <i class="fas fa-calendar-day"></i>
-                                <input type="text" id="fecha-servicio" readonly
-                                    placeholder="Selecciona en el calendario">
-                            </div>
-                        </div>
-
-                        <div class="campo">
-                            <label for="tipo-servicio">Tipo de servicio</label>
-                            <select id="tipo-servicio" required>
-                                <option value="">Elige un servicio</option>
-                                <option value="Corte de cabello">Corte de cabello</option>
-                                <option value="Coloración profesional">Coloración profesional</option>
-                                <option value="Tratamiento capilar">Tratamiento capilar</option>
-                                <option value="Manicura express">Manicura express</option>
-                                <option value="Pedicura spa">Pedicura spa</option>
-                                <option value="Masaje relajante">Masaje relajante</option>
-                                <option value="Maquillaje social">Maquillaje social</option>
-                                <option value="Depilación facial">Depilación facial</option>
-                                <option value="Otro servicio">Otro servicio</option>
+                        <!-- Filtros Avanzados -->
+                        <div class="mb-3">
+                            <label for="filtro-categoria" class="form-label small">Filtrar por categoría:</label>
+                            <select class="form-select form-select-sm" id="filtro-categoria">
+                                <option value="todas">Todas las categorías</option>
+                                <!-- Categorías cargadas dinámicamente -->
                             </select>
                         </div>
 
-                        <div class="campo">
-                            <label for="detalles-servicio">Detalles adicionales</label>
-                            <textarea id="detalles-servicio"
-                                placeholder="Notas importantes sobre el servicio..."></textarea>
+                        <!-- Barra de Búsqueda -->
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control" id="buscar-servicios" placeholder="Buscar servicios...">
+                            <button class="btn btn-outline-secondary" type="button" id="btn-buscar">
+                                <i class="fas fa-search"></i>
+                            </button>
                         </div>
 
-                        <button type="submit" class="btn-principal">
-                            <i class="fas fa-calendar-plus"></i>
-                            Agendar servicio
-                        </button>
-                    </form>
-                </div>
-            </section>
-            <!-- Lista de servicios agendados -->
-            <section class="panel-derecho">
-                <div class="tarjeta lista-servicios">
-                    <div class="cabecera-lista">
-                        <h2><i class="fas fa-list-check"></i> Servicios Agendados</h2>
-                        <div class="contador" id="contador-servicios">0</div>
-                    </div>
+                        <!-- Información del Servicio Seleccionado -->
+                        <div class="alert alert-info d-none" id="info-servicio-seleccionado">
+                            <small>
+                                <strong id="info-nombre-servicio"></strong><br>
+                                <span id="info-duracion-servicio"></span> • <span id="info-precio-servicio"></span><br>
+                                <span id="info-descripcion-servicio"></span>
+                            </small>
+                        </div>
 
-                    <div class="filtros">
-                        <button id="ver-todos" class="btn-filtro activo">
-                            <i class="fas fa-layer-group"></i> Todos
-                        </button>
-                        <button id="buscar-fecha" class="btn-filtro">
-                            <i class="fas fa-magnifying-glass"></i> Buscar fecha
-                        </button>
-                        <button id="limpiar-lista" class="btn-filtro peligro">
-                            <i class="fas fa-broom"></i> Limpiar
-                        </button>
-                    </div>
-
-                    <div class="contenedor-resultados" id="contenedor-resultados">
-                        <div class="estado-vacio">
-                            <div class="icono-vacio">
-                                <i class="fas fa-clipboard-list"></i>
+                        <!-- Lista de Servicios -->
+                        <div class="servicios-container flex-grow-1" style="max-height: 400px; overflow-y: auto;">
+                            <div id="contenedor-resultados">
+                                <div class="text-center text-muted py-5">
+                                    <i class="fas fa-clipboard-list fa-3x mb-3"></i>
+                                    <h5>No hay servicios programados</h5>
+                                    <p class="small">Comienza agendando tu primer servicio</p>
+                                </div>
                             </div>
-                            <h3>No hay servicios programados</h3>
-                            <p>Comienza agendando tu primer servicio usando el formulario</p>
+                        </div>
+
+                        <!-- Resumen -->
+                        <div class="mt-3 pt-3 border-top">
+                            <div class="row small text-muted mb-2">
+                                <div class="col-6">Total servicios:</div>
+                                <div class="col-6 text-end" id="resumen-total">0</div>
+                            </div>
+                            <div class="row small text-muted mb-3">
+                                <div class="col-6">Ingresos estimados:</div>
+                                <div class="col-6 text-end" id="resumen-ingresos">$0.00</div>
+                            </div>
+                            
+                            <div class="d-grid gap-2">
+                                <button class="btn btn-success" id="btn-exportar">
+                                    <i class="fas fa-file-export me-2"></i>Exportar Reporte
+                                </button>
+                                <button class="btn btn-outline-danger" id="btn-limpiar-todo">
+                                    <i class="fas fa-broom me-2"></i>Limpiar Todo
+                                </button>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </section>
-        </main>
-        <!-- Footer -->
-        <footer class="pie-pagina">
-            <div class="info-footer">
-                <p>&copy; 2024 AgendaPro - Sistema de gestión desarrollado por Isabella Yanes</p>
-                <div class="estado-sistema">
-                    <i class="fas fa-circle-check"></i>
-                    <span>Sincronizado</span>
                 </div>
             </div>
-        </footer>
+        </div>
     </div>
-    <!-- Scripts -->
-    <script src="js/app.js"></script>
-</body>
 
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- SweetAlert personalizado -->
+    <script src="js/sweetalert.js"></script>
+    <!-- Aplicación principal -->
+    <script src="js/app.js"></script>
+    <!-- Inicialización de la aplicación -->
+     <script src="js/modal.js"></script>
+    
+    <script>
+        // Inicializar la aplicación cuando el DOM esté listo
+        document.addEventListener('DOMContentLoaded', function() {
+            window.agenda = new AgendaServicios();
+        });
+    </script>
+</body>
 </html>

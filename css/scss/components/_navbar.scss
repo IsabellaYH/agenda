@@ -1,0 +1,72 @@
+// =============================================
+// COMPONENTE: NAVBAR - TEMA BLANCO
+// =============================================
+
+.navbar.bg-primary {
+    background: $white !important;
+    @include elegant-border($border-color-light);
+    border-bottom: $border-width-thick solid $primary !important;
+    box-shadow: $shadow-sm;
+    padding: $spacer-sm 0;
+
+    .navbar-brand {
+        font-size: 1.5rem;
+        font-weight: $font-weight-bold;
+        @include text-gradient;
+        transition: transform $transition-base;
+
+        &:hover {
+            transform: scale(1.05);
+        }
+    }
+
+    .badge.bg-light {
+        @include gold-gradient-light;
+        font-weight: $font-weight-semibold;
+        @include button-gold-hover;
+    }
+
+    .btn-outline-light {
+        @include elegant-border($primary);
+        color: $primary !important;
+        background: transparent !important;
+        @include button-gold-hover;
+
+        &:hover {
+            @include gold-gradient-light;
+        }
+    }
+
+    // Navbar toggler para móviles
+    .navbar-toggler {
+        @include elegant-border($primary);
+        color: $primary;
+        
+        &:focus {
+            box-shadow: 0 0 0 0.2rem $primary-15;
+        }
+    }
+
+    // Items del navbar
+    .navbar-nav {
+        .nav-link {
+            color: $dark-light;
+            font-weight: $font-weight-semibold;
+            transition: all $transition-base;
+            @include elegant-border-light;
+            border: none;
+            border-bottom: 2px solid transparent;
+            margin: 0 $spacer-sm;
+            
+            &:hover {
+                color: $primary;
+                border-bottom-color: $primary-50;
+            }
+            
+            &.active {
+                color: $primary;
+                border-bottom-color: $primary;
+            }
+        }
+    }
+}

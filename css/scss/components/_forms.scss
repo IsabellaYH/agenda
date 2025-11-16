@@ -1,0 +1,90 @@
+// =============================================
+// COMPONENTE: FORMULARIOS - TEMA BLANCO
+// =============================================
+
+.form-control,
+.form-select {
+    background: $white !important;
+    @include elegant-border-light;
+    color: $dark !important;
+    transition: all $transition-base;
+
+    &:focus {
+        background: $white !important;
+        border-color: $primary !important;
+        box-shadow: 0 0 0 0.2rem $primary-15 !important;
+        color: $dark !important;
+        transform: translateY(-1px);
+    }
+
+    &::placeholder {
+        color: $dark-lighter !important;
+    }
+
+    // Estados
+    &:disabled {
+        background: $white-darker !important;
+        color: $dark-disabled !important;
+        cursor: not-allowed;
+    }
+    
+    &.is-invalid {
+        border-color: $danger !important;
+        
+        &:focus {
+            box-shadow: 0 0 0 0.2rem rgba($danger, 0.15) !important;
+        }
+    }
+    
+    &.is-valid {
+        border-color: $success !important;
+        
+        &:focus {
+            box-shadow: 0 0 0 0.2rem rgba($success, 0.15) !important;
+        }
+    }
+}
+
+.form-label {
+    color: $dark !important;
+    font-weight: $font-weight-semibold;
+    margin-bottom: $spacer-sm;
+}
+
+.input-group-text {
+    background: $white-dark !important;
+    @include elegant-border-light;
+    color: $primary !important;
+    font-weight: $font-weight-semibold;
+}
+
+.form-check-input {
+    @include elegant-border-light;
+    
+    &:checked {
+        background-color: $primary !important;
+        border-color: $primary !important;
+    }
+    
+    &:focus {
+        border-color: $primary !important;
+        box-shadow: 0 0 0 0.2rem $primary-15 !important;
+    }
+}
+
+.form-check-label {
+    color: $dark !important;
+}
+
+// Validación
+.invalid-feedback {
+    color: $danger;
+    font-size: 0.875rem;
+    margin-top: $spacer-sm;
+}
+
+.valid-feedback {
+    color: $success;
+    font-size: 0.875rem;
+    margin-top: $spacer-sm;
+}

@@ -1,0 +1,65 @@
+// =============================================
+// RESET Y ESTILOS BASE - TEMA BLANCO
+// =============================================
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body.agenda-pro {
+    background: $gradient-white;
+    color: $dark;
+    font-family: $font-family-base;
+    min-height: 100vh;
+    line-height: 1.6;
+    
+    // Scrollbar global
+    @include custom-scrollbar;
+}
+
+// Utilidades de texto
+.text-gold {
+    color: $primary !important;
+}
+
+.text-gold-light {
+    color: $primary-70 !important;
+}
+
+.bg-gradient-gold {
+    @include gold-gradient;
+}
+
+.bg-gradient-gold-light {
+    @include gold-gradient-light;
+}
+
+.bg-gradient-gold-subtle {
+    @include gold-gradient-subtle;
+}
+
+.border-gold {
+    border-color: $primary !important;
+}
+
+.border-gold-light {
+    border-color: $primary-50 !important;
+}
+
+.border-dark {
+    border-color: $border-color !important;
+}
+
+// Estados de focus mejorados
+*:focus {
+    outline: 2px solid $primary-50;
+    outline-offset: 2px;
+}
+
+// Selección de texto
+::selection {
+    background: $primary-30;
+    color: $dark;
+}

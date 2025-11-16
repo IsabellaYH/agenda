@@ -1,0 +1,119 @@
+// =============================================
+// VARIABLES DEL TEMA - BLANCO, NEGRO Y DORADO
+// =============================================
+
+// Colores principales - DORADO
+$primary: #D4AF37;
+$primary-dark: #B8860B;
+$primary-light: #F5E6A3;
+$primary-70: rgba(212, 175, 55, 0.7);
+$primary-50: rgba(212, 175, 55, 0.5);
+$primary-30: rgba(212, 175, 55, 0.3);
+$primary-15: rgba(212, 175, 55, 0.15);
+$primary-10: rgba(212, 175, 55, 0.1);
+$primary-5: rgba(212, 175, 55, 0.05);
+
+// Colores de fondo - BLANCO
+$white: #FFFFFF;
+$white-dark: #F8F9FA;
+$white-darker: #E9ECEF;
+$white-darkest: #DEE2E6;
+
+// Colores de texto - NEGRO
+$dark: #212529;
+$dark-light: #495057;
+$dark-lighter: #6C757D;
+$dark-disabled: #ADB5BD;
+
+// Colores de bordes - NEGRO
+$border-color: #343A40;
+$border-color-light: #6C757D;
+$border-color-lighter: #ADB5BD;
+
+// Colores de estado
+$success: #28a745;
+$success-light: rgba(40, 167, 69, 0.1);
+$danger: #dc3545;
+$danger-light: rgba(220, 53, 69, 0.1);
+$warning: #ffc107;
+$warning-light: rgba(255, 193, 7, 0.1);
+$info: #17a2b8;
+$info-light: rgba(23, 162, 184, 0.1);
+
+// Gradientes mejorados
+$gradient-primary: linear-gradient(135deg, $primary, $primary-dark);
+$gradient-primary-light: linear-gradient(135deg, $primary-70, $primary-50);
+$gradient-primary-subtle: linear-gradient(135deg, $primary-30, $primary-15);
+$gradient-white: linear-gradient(135deg, $white, $white-dark);
+$gradient-success: linear-gradient(135deg, $success, darken($success, 10%));
+$gradient-danger: linear-gradient(135deg, $danger, darken($danger, 10%));
+
+// Bordes
+$border-radius: 0.75rem;
+$border-radius-sm: 0.5rem;
+$border-radius-lg: 1rem;
+$border-width: 2px;
+$border-width-thick: 3px;
+
+// Sombras sutiles
+$shadow-sm: 0 0.125rem 0.25rem rgba(33, 37, 41, 0.1);
+$shadow-md: 0 0.5rem 1rem rgba(33, 37, 41, 0.15);
+$shadow-lg: 0 1rem 3rem rgba(33, 37, 41, 0.2);
+$shadow-gold: 0 0.5rem 1.5rem rgba(212, 175, 55, 0.25);
+$shadow-gold-subtle: 0 0.25rem 0.75rem rgba(212, 175, 55, 0.15);
+
+// Transiciones
+$transition-fast: 0.15s ease;
+$transition-base: 0.3s ease;
+$transition-slow: 0.5s ease;
+$transition-bounce: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+// Espaciados
+$spacer: 1rem;
+$spacer-sm: 0.5rem;
+$spacer-lg: 2rem;
+$spacer-xl: 3rem;
+
+// Tipografía
+$font-family-base: 'Segoe UI', system-ui, -apple-system, sans-serif;
+$font-weight-light: 300;
+$font-weight-normal: 400;
+$font-weight-semibold: 600;
+$font-weight-bold: 700;
+
+// Breakpoints
+$breakpoint-sm: 576px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 992px;
+$breakpoint-xl: 1200px;
+$breakpoint-xxl: 1400px;
+
+// Z-index
+$z-index-dropdown: 1000;
+$z-index-sticky: 1020;
+$z-index-fixed: 1030;
+$z-index-modal-backdrop: 1040;
+$z-index-modal: 1050;
+$z-index-popover: 1060;
+$z-index-tooltip: 1070;
+$z-index-toast: 1080;
+
+// Sobrescribir variables de Bootstrap
+:root {
+    --bs-primary: #{$primary} !important;
+    --bs-primary-rgb: #{red($primary), green($primary), blue($primary)} !important;
+    --bs-secondary: #{$dark-light} !important;
+    --bs-secondary-rgb: #{red($dark-light), green($dark-light), blue($dark-light)} !important;
+    --bs-dark: #{$dark} !important;
+    --bs-dark-rgb: #{red($dark), green($dark), blue($dark)} !important;
+    --bs-light: #{$white-dark} !important;
+    --bs-light-rgb: #{red($white-dark), green($white-dark), blue($white-dark)} !important;
+    --bs-success: #{$success} !important;
+    --bs-danger: #{$danger} !important;
+    --bs-warning: #{$warning} !important;
+    --bs-info: #{$info} !important;
+    --bs-border-color: #{$border-color-light} !important;
+    --bs-border-radius: #{$border-radius} !important;
+    --bs-border-radius-sm: #{$border-radius-sm} !important;
+    --bs-border-radius-lg: #{$border-radius-lg} !important;
+}

@@ -1,0 +1,184 @@
+// =============================================
+// MIXINS REUTILIZABLES - TEMA BLANCO Y NEGRO
+// =============================================
+
+// Mixin para gradiente dorado mejorado
+@mixin gold-gradient {
+    background: $gradient-primary;
+    color: $dark;
+    border: $border-width solid $primary-dark;
+}
+
+@mixin gold-gradient-light {
+    background: $gradient-primary-light;
+    color: $dark;
+    border: $border-width solid $primary-50;
+}
+
+@mixin gold-gradient-subtle {
+    background: $gradient-primary-subtle;
+    color: $dark;
+    border: $border-width solid $primary-30;
+}
+
+// Mixin para bordes elegantes en negro
+@mixin elegant-border($color: $border-color, $width: $border-width) {
+    border: $width solid $color;
+}
+
+@mixin elegant-border-light {
+    border: $border-width solid $border-color-light;
+}
+
+@mixin elegant-border-lighter {
+    border: $border-width solid $border-color-lighter;
+}
+
+// Mixin para efecto hover en cards
+@mixin card-hover {
+    transition: all $transition-base;
+    
+    &:hover {
+        transform: translateY(-0.25rem);
+        box-shadow: $shadow-md;
+        border-color: $primary-50;
+    }
+}
+
+// Mixin para animación de botones mejorada
+@mixin button-hover-animation {
+    transition: all $transition-bounce;
+    position: relative;
+    overflow: hidden;
+    
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, $primary-30, transparent);
+        transition: left 0.6s;
+    }
+    
+    &:hover {
+        transform: translateY(-2px);
+        box-shadow: $shadow-gold-subtle;
+        
+        &::before {
+            left: 100%;
+        }
+    }
+    
+    &:active {
+        transform: translateY(0);
+        transition: transform 0.1s;
+    }
+}
+
+// Mixin para animación de botones con gradiente dorado
+@mixin button-gold-hover {
+    @include button-hover-animation;
+    
+    &:hover {
+        @include gold-gradient-light;
+        box-shadow: $shadow-gold;
+    }
+}
+
+// Mixin para textos con gradiente dorado
+@mixin text-gradient {
+    background: $gradient-primary;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+// Mixin para textos con gradiente dorado sutil
+@mixin text-gradient-light {
+    background: $gradient-primary-light;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+// Mixin para responsive design
+@mixin respond-to($breakpoint) {
+    @if $breakpoint == sm {
+        @media (max-width: #{$breakpoint-sm}) { @content; }
+    }
+    @if $breakpoint == md {
+        @media (max-width: #{$breakpoint-md}) { @content; }
+    }
+    @if $breakpoint == lg {
+        @media (max-width: #{$breakpoint-lg}) { @content; }
+    }
+    @if $breakpoint == xl {
+        @media (max-width: #{$breakpoint-xl}) { @content; }
+    }
+    @if $breakpoint == xxl {
+        @media (max-width: #{$breakpoint-xxl}) { @content; }
+    }
+}
+
+// Mixin para scrollbar personalizado
+@mixin custom-scrollbar {
+    &::-webkit-scrollbar {
+        width: 6px;
+    }
+    
+    &::-webkit-scrollbar-track {
+        background: $white-darker;
+        border-radius: 3px;
+    }
+    
+    &::-webkit-scrollbar-thumb {
+        background: $primary-50;
+        border-radius: 3px;
+        
+        &:hover {
+            background: $primary;
+        }
+    }
+}
+
+// Mixin para animación de pulso dorado sutil
+@mixin gold-pulse-subtle {
+    animation: pulse-gold-subtle 2s infinite;
+    
+    @keyframes pulse-gold-subtle {
+        0%, 100% {
+            box-shadow: 0 0 0 0 $primary-30;
+        }
+        50% {
+            box-shadow: 0 0 0 4px $primary-15;
+        }
+    }
+}
+
+// Mixin para fade in up
+@mixin fade-in-up {
+    animation: fadeInUp 0.5s ease-out;
+    
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(1rem);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+}
+
+// Mixin para sombra dorada sutil
+@mixin gold-glow-subtle {
+    box-shadow: 0 0 20px $primary-15;
+    transition: box-shadow $transition-base;
+    
+    &:hover {
+        box-shadow: 0 0 30px $primary-25;
+    }
+}

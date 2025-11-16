@@ -1,0 +1,130 @@
+// =============================================
+// LAYOUT: SERVICIOS - TEMA BLANCO
+// =============================================
+
+.servicios-container {
+    @include custom-scrollbar;
+    max-height: 500px;
+    overflow-y: auto;
+}
+
+.servicio-item {
+    background: $white !important;
+    @include elegant-border-light;
+    transition: all $transition-base;
+    border-left: 4px solid $primary !important;
+    padding: $spacer-lg;
+    margin-bottom: $spacer;
+    border-radius: $border-radius;
+    position: relative;
+    @include card-hover;
+
+    .encabezado-servicio {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin-bottom: $spacer;
+
+        h3 {
+            font-size: 1.1rem;
+            font-weight: $font-weight-semibold;
+            color: $dark !important;
+            margin-bottom: $spacer-sm;
+        }
+
+        .etiqueta-servicio {
+            @include gold-gradient-light;
+            padding: 0.25rem 0.75rem;
+            border-radius: 1rem;
+            font-size: 0.75rem;
+            font-weight: $font-weight-semibold;
+        }
+    }
+
+    .detalle-servicio {
+        display: flex;
+        align-items: center;
+        margin-bottom: $spacer-sm;
+        font-size: 0.9rem;
+        color: $dark-light !important;
+
+        i {
+            width: 1rem;
+            margin-right: $spacer-sm;
+            color: $primary !important;
+        }
+    }
+
+    .btn-eliminar {
+        position: absolute;
+        top: $spacer;
+        right: $spacer;
+        background: none;
+        border: none;
+        color: $dark-lighter !important;
+        cursor: pointer;
+        padding: 0.25rem;
+        border-radius: $border-radius-sm;
+        @include button-hover-animation;
+
+        &:hover {
+            color: $danger !important;
+            background: $danger-light !important;
+        }
+    }
+
+    .servicio-actions {
+        margin-top: $spacer;
+        padding-top: $spacer;
+        border-top: 1px solid $border-color-lighter;
+
+        .btn-group {
+            .btn {
+                font-size: 0.8rem;
+                padding: 0.4rem 0.8rem;
+            }
+        }
+    }
+
+    @include respond-to(sm) {
+        .encabezado-servicio {
+            flex-direction: column;
+            align-items: flex-start;
+
+            .etiqueta-servicio {
+                margin-top: $spacer-sm;
+            }
+        }
+    }
+}
+
+// Estados de pago
+.estado-pago {
+    &-pendiente {
+        color: $warning;
+        background: $warning-light;
+        padding: 0.25rem 0.5rem;
+        border-radius: $border-radius-sm;
+        font-size: 0.75rem;
+        font-weight: $font-weight-semibold;
+    }
+    
+    &-pagado {
+        color: $success;
+        background: $success-light;
+        padding: 0.25rem 0.5rem;
+        border-radius: $border-radius-sm;
+        font-size: 0.75rem;
+        font-weight: $font-weight-semibold;
+    }
+    
+    &-cancelado {
+        color: $danger;
+        background: $danger-light;
+        padding: 0.25rem 0.5rem;
+        border-radius: $border-radius-sm;
+        font-size: 0.75rem;
+        font-weight: $font-weight-semibold;
+        text-decoration: line-through;
+    }
+}

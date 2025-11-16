@@ -1,0 +1,131 @@
+// =============================================
+// COMPONENTE: BOTONES - TEMA BLANCO Y NEGRO
+// =============================================
+
+.btn {
+    font-weight: $font-weight-semibold;
+    @include elegant-border($border-color);
+    background: $white;
+    color: $dark;
+    @include button-hover-animation;
+
+    // Tamaños
+    &.btn-sm {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.875rem;
+    }
+    
+    &.btn-lg {
+        padding: 0.75rem 1.5rem;
+        font-size: 1.125rem;
+    }
+
+    // Variantes principales
+    &.btn-primary {
+        @include gold-gradient;
+        @include button-gold-hover;
+    }
+
+    &.btn-outline-primary {
+        @include elegant-border($primary);
+        color: $primary !important;
+        background: transparent !important;
+        @include button-gold-hover;
+
+        &:hover,
+        &.active {
+            @include gold-gradient-light;
+        }
+    }
+
+    // Botones secundarios en negro
+    &.btn-outline-secondary {
+        @include elegant-border($border-color);
+        color: $dark !important;
+        background: transparent !important;
+        @include button-hover-animation;
+
+        &:hover {
+            background: $dark !important;
+            color: $white !important;
+            border-color: $dark;
+        }
+    }
+
+    &.btn-success {
+        background: $gradient-success !important;
+        color: $white !important;
+        border: $border-width solid darken($success, 10%) !important;
+        @include button-hover-animation;
+    }
+
+    &.btn-outline-danger {
+        @include elegant-border($danger);
+        color: $danger !important;
+        background: transparent !important;
+        @include button-hover-animation;
+
+        &:hover {
+            background: $danger !important;
+            color: $white !important;
+        }
+    }
+
+    &.btn-light {
+        background: $white-dark !important;
+        color: $dark !important;
+        @include elegant-border-light;
+        @include button-hover-animation;
+        
+        &:hover {
+            background: $white-darker !important;
+            border-color: $border-color;
+        }
+    }
+
+    // Botones con iconos
+    &.btn-icon {
+        display: inline-flex;
+        align-items: center;
+        gap: $spacer-sm;
+        
+        i {
+            font-size: 1.1em;
+        }
+    }
+
+    // Estados disabled
+    &:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+        transform: none !important;
+        
+        &::before {
+            display: none;
+        }
+    }
+}
+
+// Grupos de botones
+.btn-group {
+    .btn {
+        margin-right: -1px;
+        
+        &:last-child {
+            margin-right: 0;
+        }
+    }
+    
+    @include respond-to(md) {
+        flex-direction: column;
+        
+        .btn {
+            margin-right: 0;
+            margin-bottom: $spacer-sm;
+            
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+    }
+}

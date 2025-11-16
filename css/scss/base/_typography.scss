@@ -1,0 +1,55 @@
+// =============================================
+// TIPOGRAFÍA - TEMA BLANCO Y NEGRO
+// =============================================
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: $font-weight-semibold;
+    line-height: 1.2;
+    margin-bottom: $spacer;
+    color: $dark;
+}
+
+h1 {
+    font-size: 2.5rem;
+    @include text-gradient;
+}
+
+h2 {
+    font-size: 2rem;
+    color: $dark;
+}
+
+h3 {
+    font-size: 1.75rem;
+    color: $dark;
+}
+
+h4 {
+    font-size: 1.5rem;
+    color: $dark;
+}
+
+h5 {
+    font-size: 1.25rem;
+    color: $dark;
+}
+
+h6 {
+    font-size: 1rem;
+    color: $dark;
+}
+
+p {
+    margin-bottom: $spacer;
+    color: $dark-light;
+}
+
+small {
+    font-size: 0.875rem;
+    color: $dark-lighter;
+}
+
+strong {
+    font-weight: $font-weight-semibold;
+    color: $dark;
+}

@@ -1,0 +1,27 @@
+// =============================================
+// FUNCIONES UTILITARIAS
+// =============================================
+
+// Función para calcular contraste de color
+@function contrast-color($color) {
+    @if (lightness($color) > 60) {
+        @return $dark;
+    } @else {
+        @return $light;
+    }
+}
+
+// Función para aclarar color
+@function tint-color($color, $weight) {
+    @return mix(white, $color, $weight);
+}
+
+// Función para oscurecer color
+@function shade-color($color, $weight) {
+    @return mix(black, $color, $weight);
+}
+
+// Función para color con transparencia
+@function rgba-color($color, $alpha) {
+    @return rgba($color, $alpha);
+}

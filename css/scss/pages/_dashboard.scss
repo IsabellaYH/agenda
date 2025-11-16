@@ -1,0 +1,60 @@
+// =============================================
+// PÁGINA: DASHBOARD
+// =============================================
+
+.estadisticas-dashboard {
+    .card {
+        text-align: center;
+        
+        .card-body {
+            padding: $spacer-xl;
+        }
+        
+        h3 {
+            font-size: 2.5rem;
+            margin-bottom: $spacer-sm;
+        }
+    }
+}
+
+.resumen-financiero {
+    background: rgba($dark, 0.6);
+    border-radius: $border-radius;
+    padding: $spacer;
+    margin-bottom: $spacer;
+    
+    .resumen-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: $spacer-sm 0;
+        border-bottom: 1px solid $border-color;
+        
+        &:last-child {
+            border-bottom: none;
+        }
+        
+        .valor {
+            font-weight: $font-weight-semibold;
+            color: $primary;
+        }
+    }
+}
+
+// Empty states
+.estado-vacio {
+    text-align: center;
+    padding: $spacer-xl $spacer;
+    color: $light-disabled;
+
+    .icono-vacio {
+        font-size: 4rem;
+        color: $primary-25;
+        margin-bottom: $spacer;
+    }
+
+    h5 {
+        color: $light-muted;
+        margin-bottom: $spacer-sm;
+    }
+}
