@@ -1,8 +1,15 @@
+@use '../abstracts/index' as *;
+
 // =============================================
 // LAYOUT: CALENDARIO - TEMA BLANCO
 // =============================================
 
 .calendar-weekdays {
+    // ensure weekdays render in a 7-column grid
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: $spacer-sm;
+
     .col {
         color: $primary !important;
         font-weight: $font-weight-semibold;
@@ -15,7 +22,79 @@
     }
 }
 
+// Controls for week scroller (mobile)
+.calendar-controls {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: center;
+    margin-top: 0.5rem;
+}
+
+/* Floating vertical controls for mobile scroller */
+.calendar-controls.floating {
+    position: absolute;
+    top: 50%;
+    right: 8px;
+    transform: translateY(-50%);
+    flex-direction: column;
+    z-index: 60;
+}
+
+/* Ensure the container that holds calendar controls creates a positioned context */
+.has-calendar-controls {
+    position: relative;
+}
+
+.calendar-control {
+    background: rgba($primary, 0.95);
+    color: $white;
+    border: none;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem;
+    cursor: pointer;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.18);
+    transition: transform 0.15s ease, opacity 0.15s ease;
+    opacity: 0.95;
+}
+
+.calendar-control:hover {
+    transform: scale(1.05);
+}
+
+.calendar-control:active {
+    transform: scale(0.98);
+}
+
+/* Desktop: hide floating controls (we use grid on desktop) */
+@include respond-to(md) {
+    .calendar-controls.floating { display: none; }
+}
+
+/* Make sure controls are visible and nicely sized on small screens */
+@include respond-to(sm) {
+    .calendar-controls { margin-top: 0.5rem; }
+    .calendar-control { width: 40px; height: 40px; font-size: 1.15rem; }
+}
+
+/* SVG icon adjustments: inherit color and fit the button */
+.calendar-control svg {
+    display: block;
+    width: 18px;
+    height: 18px;
+    color: inherit; /* stroke uses currentColor */
+}
+
+// calendar days grid: 7 columns for days of week
 #dias-calendario {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: $spacer-sm;
+
     .dia-calendario {
         aspect-ratio: 1;
         @include elegant-border-light;
@@ -73,6 +152,16 @@
             }
         }
 
+        &.disabled {
+            opacity: 0.45;
+            background: $white-darker !important;
+            color: $dark-disabled !important;
+            cursor: not-allowed;
+            pointer-events: none;
+            box-shadow: none;
+            transform: none;
+        }
+
         .numero-dia {
             font-size: 0.875rem;
             font-weight: $font-weight-medium;
@@ -95,8 +184,55 @@
     }
     
     @include respond-to(sm) {
-        .dia-calendario .numero-dia {
-            font-size: 0.75rem;
+        // mobile: make days more compact and readable
+        gap: 0.25rem;
+
+        .dia-calendario {
+            aspect-ratio: auto; // allow flexible height on small screens
+            min-height: 3rem;
+            padding: 0.35rem;
+            justify-content: flex-start;
+            align-items: flex-start;
+
+            .numero-dia {
+                font-size: 0.75rem;
+            }
+
+            .contador-servicios {
+                top: 6px;
+                right: 6px;
+                width: 16px;
+                height: 16px;
+                font-size: 0.65rem;
+            }
+        }
+
+        .calendar-weekdays {
+            grid-auto-flow: column;
+            .col {
+                font-size: 0.75rem;
+                padding: 0.25rem;
+            }
+        }
+
+        // compact week-per-row horizontal scroller
+        #dias-calendario {
+            display: flex;
+            overflow-x: auto;
+            gap: 0.5rem;
+            padding-bottom: $spacer-sm;
+            -webkit-overflow-scrolling: touch;
+
+            .semana-row {
+                display: grid;
+                grid-template-columns: repeat(7, 1fr);
+                gap: 0.25rem;
+                min-width: calc(7 * 3.2rem);
+                scroll-snap-align: center;
+                padding: 0.25rem;
+            }
+
+            scroll-snap-type: x mandatory;
         }
     }
 }

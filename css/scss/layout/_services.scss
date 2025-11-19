@@ -1,6 +1,8 @@
 // =============================================
 // LAYOUT: SERVICIOS - TEMA BLANCO
+// (Renamed from _sevices.scss -> _services.scss)
 // =============================================
+@use '../abstracts/index' as *;
 
 .servicios-container {
     @include custom-scrollbar;

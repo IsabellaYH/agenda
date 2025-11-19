@@ -2,6 +2,8 @@
 // VARIABLES DEL TEMA - BLANCO, NEGRO Y DORADO
 // =============================================
 
+@use 'sass:color' as color;
+
 // Colores principales - DORADO
 $primary: #D4AF37;
 $primary-dark: #B8860B;
@@ -12,12 +14,19 @@ $primary-30: rgba(212, 175, 55, 0.3);
 $primary-15: rgba(212, 175, 55, 0.15);
 $primary-10: rgba(212, 175, 55, 0.1);
 $primary-5: rgba(212, 175, 55, 0.05);
+// Nivel adicional de primary usado en algunos componentes
+$primary-25: rgba($primary, 0.25);
 
 // Colores de fondo - BLANCO
 $white: #FFFFFF;
 $white-dark: #F8F9FA;
 $white-darker: #E9ECEF;
 $white-darkest: #DEE2E6;
+
+// Aliases para colores "light" usados en componentes
+$light: $white-dark;
+$light-muted: rgba($white-dark, 0.7);
+$light-disabled: rgba($white-dark, 0.5);
 
 // Colores de texto - NEGRO
 $dark: #212529;
@@ -45,8 +54,8 @@ $gradient-primary: linear-gradient(135deg, $primary, $primary-dark);
 $gradient-primary-light: linear-gradient(135deg, $primary-70, $primary-50);
 $gradient-primary-subtle: linear-gradient(135deg, $primary-30, $primary-15);
 $gradient-white: linear-gradient(135deg, $white, $white-dark);
-$gradient-success: linear-gradient(135deg, $success, darken($success, 10%));
-$gradient-danger: linear-gradient(135deg, $danger, darken($danger, 10%));
+$gradient-success: linear-gradient(135deg, $success, color.adjust($success, $lightness: -10%));
+$gradient-danger: linear-gradient(135deg, $danger, color.adjust($danger, $lightness: -10%));
 
 // Bordes
 $border-radius: 0.75rem;
@@ -78,6 +87,7 @@ $spacer-xl: 3rem;
 $font-family-base: 'Segoe UI', system-ui, -apple-system, sans-serif;
 $font-weight-light: 300;
 $font-weight-normal: 400;
+$font-weight-medium: 500;
 $font-weight-semibold: 600;
 $font-weight-bold: 700;
 
@@ -101,13 +111,13 @@ $z-index-toast: 1080;
 // Sobrescribir variables de Bootstrap
 :root {
     --bs-primary: #{$primary} !important;
-    --bs-primary-rgb: #{red($primary), green($primary), blue($primary)} !important;
+    --bs-primary-rgb: #{color.channel($primary, "red", $space: rgb), color.channel($primary, "green", $space: rgb), color.channel($primary, "blue", $space: rgb)} !important;
     --bs-secondary: #{$dark-light} !important;
-    --bs-secondary-rgb: #{red($dark-light), green($dark-light), blue($dark-light)} !important;
+    --bs-secondary-rgb: #{color.channel($dark-light, "red", $space: rgb), color.channel($dark-light, "green", $space: rgb), color.channel($dark-light, "blue", $space: rgb)} !important;
     --bs-dark: #{$dark} !important;
-    --bs-dark-rgb: #{red($dark), green($dark), blue($dark)} !important;
+    --bs-dark-rgb: #{color.channel($dark, "red", $space: rgb), color.channel($dark, "green", $space: rgb), color.channel($dark, "blue", $space: rgb)} !important;
     --bs-light: #{$white-dark} !important;
-    --bs-light-rgb: #{red($white-dark), green($white-dark), blue($white-dark)} !important;
+    --bs-light-rgb: #{color.channel($white-dark, "red", $space: rgb), color.channel($white-dark, "green", $space: rgb), color.channel($white-dark, "blue", $space: rgb)} !important;
     --bs-success: #{$success} !important;
     --bs-danger: #{$danger} !important;
     --bs-warning: #{$warning} !important;

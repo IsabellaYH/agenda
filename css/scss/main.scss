@@ -2,29 +2,29 @@
 // ARCHIVO PRINCIPAL - AGENDAPRO TEMA BLANCO
 // =============================================
 
-// Abstracts
-@import 'abstracts/variables';
-@import 'abstracts/mixins';
-@import 'abstracts/functions';
+// Abstracts (modern Sass: use with `as *` to keep current variable/mixin usage)
+@use 'abstracts/variables' as *;
+@use 'abstracts/mixins' as *;
+@use 'abstracts/funtions' as *;
 
 // Base
-@import 'base/reset';
-@import 'base/typography';
+@use 'base/reset' as *;
+@use 'base/typography' as *;
 
 // Components
-@import 'components/buttons';
-@import 'components/cards';
-@import 'components/forms';
-@import 'components/navbar';
-@import 'components/modals';
+@use 'components/buttons' as *;
+@use 'components/card' as *;
+@use 'components/forms' as *;
+@use 'components/navbar' as *;
+@use 'components/modals' as *;
 
 // Layout
-@import 'layout/calendar';
-@import 'layout/services';
-@import 'layout/grid';
+@use 'layout/calendar' as *;
+@use 'layout/services' as *;
+@use 'layout/grid' as *;
 
 // Pages
-@import 'pages/dashboard';
+@use 'pages/dashboard' as *;
 
 // =============================================
 // ESTILOS GLOBALES - TEMA BLANCO

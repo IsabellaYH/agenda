@@ -2,6 +2,8 @@
 // MIXINS REUTILIZABLES - TEMA BLANCO Y NEGRO
 // =============================================
 
+@use 'variables' as *;
+
 // Mixin para gradiente dorado mejorado
 @mixin gold-gradient {
     background: $gradient-primary;

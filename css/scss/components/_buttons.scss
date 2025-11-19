@@ -2,9 +2,13 @@
 // COMPONENTE: BOTONES - TEMA BLANCO Y NEGRO
 // =============================================
 
+@use 'sass:color' as color;
+@use '../abstracts/index' as *;
+
+// =============================================
+// COMPONENTE: BOTONES
+// =============================================
 .btn {
-    font-weight: $font-weight-semibold;
-    @include elegant-border($border-color);
     background: $white;
     color: $dark;
     @include button-hover-animation;
@@ -55,7 +59,7 @@
     &.btn-success {
         background: $gradient-success !important;
         color: $white !important;
-        border: $border-width solid darken($success, 10%) !important;
+        border: $border-width solid color.adjust($success, $lightness: -10%) !important;
         @include button-hover-animation;
     }
 

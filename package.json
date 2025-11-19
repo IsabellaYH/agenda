@@ -2,11 +2,11 @@
   "name": "agendapro",
   "version": "1.0.0",
   "scripts": {
-    "sass:watch": "sass --watch scss:css",
-    "sass:build": "sass scss/main.scss css/styles.css --style=compressed",
-    "sass:dev": "sass scss/main.scss css/styles.css --watch"
+    "build:css": "sass css/scss/main.scss css/style.css --no-source-map --style=expanded",
+    "build:css:prod": "sass css/scss/main.scss css/style.css --no-source-map --style=compressed",
+    "watch:css": "sass --watch css/scss:css --no-source-map"
   },
   "devDependencies": {
-    "sass": "^1.66.1"
+    "sass": "^1.76.0"
   }
 }

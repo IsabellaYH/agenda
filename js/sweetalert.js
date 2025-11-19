@@ -1,10 +1,8 @@
-// SweetAlert2 - Versión simplificada para el proyecto
+// SweetAlert2 - Versión simplificada para el proyecto (ES Module)
 class SweetAlert {
     static async fire(options) {
         // Simular el comportamiento básico de SweetAlert2
-        if (typeof options === 'string') {
-            options = { title: options };
-        }
+        if (typeof options === 'string') options = { title: options };
 
         const {
             title = '',
@@ -28,24 +26,14 @@ class SweetAlert {
                 resolve
             });
             document.body.appendChild(modal);
+            // trigger CSS-driven enter animation
+            requestAnimationFrame(() => modal.classList.add('open'));
         });
     }
 
     static createModal(options) {
         const modal = document.createElement('div');
         modal.className = 'sweet-alert-modal';
-        modal.style.cssText = `
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.5);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 9999;
-        `;
 
         const iconMap = {
             success: '✓',
@@ -55,66 +43,14 @@ class SweetAlert {
             question: '?'
         };
 
-        const iconColorMap = {
-            success: '#28a745',
-            error: '#dc3545',
-            warning: '#ffc107',
-            info: '#17a2b8',
-            question: '#D4AF37'
-        };
-
         modal.innerHTML = `
-            <div class="sweet-alert-content" style="
-                background: #2C2C2C;
-                border: 2px solid #D4AF37;
-                border-radius: 12px;
-                padding: 2rem;
-                max-width: 400px;
-                width: 90%;
-                color: #F8F9FA;
-                text-align: center;
-                box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-            ">
-                <div class="sweet-alert-icon" style="
-                    font-size: 3rem;
-                    color: ${iconColorMap[options.icon]};
-                    margin-bottom: 1rem;
-                ">${iconMap[options.icon]}</div>
-                
-                <h3 style="color: #D4AF37; margin-bottom: 1rem;">${options.title}</h3>
-                
-                ${options.text ? `<p style="margin-bottom: 1.5rem; line-height: 1.5;">${options.text}</p>` : ''}
-                
-                <div class="sweet-alert-buttons" style="
-                    display: flex;
-                    gap: 1rem;
-                    justify-content: center;
-                ">
-                    ${options.showCancelButton ? `
-                        <button class="sweet-cancel-btn" style="
-                            padding: 0.75rem 1.5rem;
-                            border: 2px solid #dc3545;
-                            background: transparent;
-                            color: #dc3545;
-                            border-radius: 6px;
-                            cursor: pointer;
-                            font-weight: 600;
-                            transition: all 0.3s ease;
-                        ">${options.cancelButtonText}</button>
-                    ` : ''}
-                    
-                    ${options.showConfirmButton ? `
-                        <button class="sweet-confirm-btn" style="
-                            padding: 0.75rem 1.5rem;
-                            background: linear-gradient(135deg, #D4AF37, #B8860B);
-                            color: #1A1A1A;
-                            border: none;
-                            border-radius: 6px;
-                            cursor: pointer;
-                            font-weight: 600;
-                            transition: all 0.3s ease;
-                        ">${options.confirmButtonText}</button>
-                    ` : ''}
+            <div class="sweet-alert-content" role="dialog" aria-modal="true" aria-label="${SweetAlert._escapeHtml(options.title)}">
+                <div class="sweet-alert-icon sweet-alert-icon--${options.icon}">${iconMap[options.icon]}</div>
+                <h3 class="sweet-alert-title">${SweetAlert._escapeHtml(options.title)}</h3>
+                ${options.text ? `<p class="sweet-alert-text">${SweetAlert._escapeHtml(options.text)}</p>` : ''}
+                <div class="sweet-alert-buttons">
+                    ${options.showCancelButton ? `<button class="sweet-cancel-btn" type="button">${SweetAlert._escapeHtml(options.cancelButtonText)}</button>` : ''}
+                    ${options.showConfirmButton ? `<button class="sweet-confirm-btn" type="button">${SweetAlert._escapeHtml(options.confirmButtonText)}</button>` : ''}
                 </div>
             </div>
         `;
@@ -125,14 +61,16 @@ class SweetAlert {
 
         if (confirmBtn) {
             confirmBtn.addEventListener('click', () => {
-                modal.remove();
+                modal.classList.remove('open');
+                modal.addEventListener('animationend', () => modal.remove(), { once: true });
                 options.resolve({ isConfirmed: true, isDenied: false, isDismissed: false });
             });
         }
 
         if (cancelBtn) {
             cancelBtn.addEventListener('click', () => {
-                modal.remove();
+                modal.classList.remove('open');
+                modal.addEventListener('animationend', () => modal.remove(), { once: true });
                 options.resolve({ isConfirmed: false, isDenied: true, isDismissed: true });
             });
         }
@@ -140,12 +78,23 @@ class SweetAlert {
         // Cerrar al hacer click fuera
         modal.addEventListener('click', (e) => {
             if (e.target === modal) {
-                modal.remove();
+                modal.classList.remove('open');
+                modal.addEventListener('animationend', () => modal.remove(), { once: true });
                 options.resolve({ isConfirmed: false, isDenied: false, isDismissed: true });
             }
         });
 
         return modal;
+    }
+
+    // Simple HTML escaper for safe insertion into text nodes
+    static _escapeHtml(str = '') {
+        return String(str)
+            .replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;')
+            .replace(/"/g, '&quot;')
+            .replace(/'/g, '&#39;');
     }
 
     // Métodos de conveniencia
@@ -188,5 +137,7 @@ class SweetAlert {
     }
 }
 
-// Hacer disponible globalmente
-window.Swal = SweetAlert;
+// Hacer disponible globalmente (compatibilidad)
+if (typeof window !== 'undefined') window.Swal = SweetAlert;
+
+export default SweetAlert;

@@ -1,6 +1,7 @@
 // =============================================
 // TIPOGRAFÍA - TEMA BLANCO Y NEGRO
 // =============================================
+@use '../abstracts/index' as *;
 
 h1, h2, h3, h4, h5, h6 {
     font-weight: $font-weight-semibold;

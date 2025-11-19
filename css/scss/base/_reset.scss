@@ -2,6 +2,8 @@
 // RESET Y ESTILOS BASE - TEMA BLANCO
 // =============================================
 
+@use '../abstracts/index' as *;
+
 * {
     margin: 0;
     padding: 0;

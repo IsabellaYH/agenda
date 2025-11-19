@@ -1,3 +1,6 @@
+@use '../abstracts/index' as *;
+@use 'sass:color' as color;
+
 // =============================================
 // COMPONENTE: MODALES
 // =============================================
@@ -67,7 +70,7 @@
             margin-bottom: $spacer-lg;
             
             i {
-                @include gold-pulse;
+                @include gold-pulse-subtle;
                 font-size: 3rem;
                 margin-bottom: $spacer;
             }
@@ -115,6 +118,125 @@
             color: $danger;
             background: transparent;
             
+            &:hover {
+                background: $danger;
+                color: $light;
+            }
+        }
+    }
+}
+
+/* Ensure service details modal has strong contrast on dark background */
+#infoServicioModal .modal-content {
+    background: $dark !important;
+    color: $light !important;
+}
+
+#infoServicioModal .modal-body {
+    color: $light;
+}
+
+#infoServicioModal .modal-body p {
+    color: $light;
+    margin-bottom: $spacer-sm;
+}
+
+#infoServicioModal .modal-header .modal-title {
+    color: $primary !important;
+}
+
+#infoServicioModal .modal-footer .btn-secondary {
+    background: transparent;
+    border-color: $border-color;
+    color: $light;
+}
+
+// ==================================================
+// SweetAlert (project lightweight) styles
+// ==================================================
+.sweet-alert-modal {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba($dark, 0.75);
+    z-index: $z-index-modal;
+    opacity: 0;
+    transition: opacity 200ms ease;
+
+    &.open {
+        opacity: 1;
+    }
+
+    .sweet-alert-content {
+        background: $dark-light;
+        color: $light;
+        @include elegant-border($primary);
+        border-radius: $border-radius-lg;
+        padding: $spacer-lg;
+        max-width: 420px;
+        width: 92%;
+        text-align: center;
+        box-shadow: $shadow-lg;
+        transform: translateY(-8px);
+        transition: transform 200ms ease, opacity 200ms ease;
+
+        .sweet-alert-icon {
+            font-size: 2.5rem;
+            margin-bottom: $spacer;
+            display: inline-block;
+            line-height: 1;
+        }
+
+        .sweet-alert-icon--success { color: $success; }
+        .sweet-alert-icon--error   { color: $danger; }
+        .sweet-alert-icon--warning { color: $warning; }
+        .sweet-alert-icon--info    { color: $info; }
+        .sweet-alert-icon--question{ color: $primary; }
+
+        .sweet-alert-title {
+            color: $primary;
+            margin: 0 0 $spacer-sm 0;
+            font-weight: $font-weight-semibold;
+        }
+
+        .sweet-alert-text {
+            margin: 0 0 $spacer-lg 0;
+            color: $light;
+            line-height: 1.4;
+            font-size: 0.95rem;
+        }
+
+        .sweet-alert-buttons {
+            display: flex;
+            gap: 0.75rem;
+            justify-content: center;
+            align-items: center;
+            margin-top: $spacer-sm;
+        }
+
+        .sweet-confirm-btn,
+        .sweet-cancel-btn {
+            padding: 0.6rem 1rem;
+            border-radius: $border-radius-sm;
+            font-weight: $font-weight-semibold;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: all 150ms ease;
+        }
+
+        .sweet-confirm-btn {
+            background: $gradient-success;
+            color: $light;
+            border-color: color.mix($primary, $dark, 20%);
+        }
+
+        .sweet-cancel-btn {
+            background: transparent;
+            color: $danger;
+            border-color: $danger;
+
             &:hover {
                 background: $danger;
                 color: $light;

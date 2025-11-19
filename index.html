@@ -21,26 +21,101 @@
             
             <div class="d-flex align-items-center">
                 <span class="badge bg-light text-dark me-3" id="badge-servicios-hoy">0 hoy</span>
-                <button class="btn btn-outline-light btn-sm" data-bs-toggle="modal" data-bs-target="#estadisticasModal">
+                <button class="btn btn-outline-light btn-sm" data-bs-toggle="modal" data-bs-target="#modalEstadisticas" aria-controls="modalEstadisticas">
                     <i class="fas fa-chart-bar me-1"></i>Estadísticas
                 </button>
             </div>
         </div>
-        <!-- Asegúrate de que el modal tenga la estructura correcta -->
-<div class="modal fade" id="modalEstadisticas" tabindex="-1">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Estadísticas</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-            </div>
-            <div class="modal-body">
-                <!-- Contenido de estadísticas -->
+        
+    </nav>
+
+    <!-- Modal de Estadísticas (moved out of nav to avoid z-index/backdrop issues) -->
+    <div class="modal fade" id="modalEstadisticas" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Estadísticas</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                </div>
+                <div class="modal-body">
+                    <div id="stats-resumen" class="mb-3">
+                        <div class="row text-center g-2">
+                            <div class="col-4">
+                                <div class="h5 mb-0" id="stats-total">0</div>
+                                <small class="text-muted">Total servicios</small>
+                            </div>
+                            <div class="col-4">
+                                <div class="h5 mb-0" id="stats-mes">0</div>
+                                <small class="text-muted">Este mes</small>
+                            </div>
+                            <div class="col-4">
+                                <div class="h5 mb-0" id="stats-semana">0</div>
+                                <small class="text-muted">Esta semana</small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h6>Categorías</h6>
+                    <div id="stats-categorias" class="mb-3"></div>
+
+                    <h6>Servicios populares</h6>
+                    <div id="stats-populares" class="mb-3"></div>
+
+                    <h6>Ingresos</h6>
+                    <div id="stats-ingresos"></div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                </div>
             </div>
         </div>
     </div>
-</div>
-    </nav>
+    <!-- Modal de Confirmación de Pago (plantilla estática) -->
+    <div class="modal fade" id="modalPagoReserva" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content bg-dark text-white">
+                <div class="modal-header border-0">
+                    <h5 class="modal-title text-warning"><i class="fas fa-credit-card me-2"></i>Confirmación de Reserva</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                </div>
+                <div class="modal-body">
+                    <div id="modal-pago-info" class="modal-pago-info mb-3 p-3">
+                        <div class="row">
+                            <div class="col-6">
+                                <small class="text-muted">Servicio:</small>
+                                <div id="modal-pago-nombre" class="fw-bold"></div>
+                            </div>
+                            <div class="col-6">
+                                <small class="text-muted">Duración:</small>
+                                <div id="modal-pago-duracion" class="fw-bold"></div>
+                            </div>
+                        </div>
+                        <div class="row mt-2">
+                            <div class="col-6">
+                                <small class="text-muted">Precio Total:</small>
+                                <div id="modal-pago-precio" class="fw-bold"></div>
+                            </div>
+                            <div class="col-6">
+                                <small class="text-muted">Seña Requerida:</small>
+                                <div id="modal-pago-senia" class="fw-bold text-success"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="modal-pago-alert" class="modal-pago-alert alert alert-warning d-flex align-items-start" role="alert">
+                        <i class="fas fa-exclamation-triangle me-2"></i>
+                        <div>
+                            <strong>Importante:</strong> La seña no es reembolsable en caso de cancelación con menos de 24 horas de anticipación.
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer border-0">
+                    <button type="button" id="btnCancelarPago" class="btn btn-danger btn-cancelar-pago" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" id="btnConfirmarPago" class="btn btn-success btn-confirmar-pago">Pagar Seña</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Main Content -->
     <div class="container my-4">
@@ -251,18 +326,32 @@
 
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- SweetAlert personalizado -->
-    <script src="js/sweetalert.js"></script>
-    <!-- Aplicación principal -->
-    <script src="js/app.js"></script>
-    <!-- Inicialización de la aplicación -->
-     <script src="js/modal.js"></script>
+    <!-- Cargar la aplicación como módulo ES6 -->
+    <!-- SheetJS para exportar XLSX (usado por la función de exportar reporte) -->
+    <script src="https://cdn.sheetjs.com/xlsx-latest/package/dist/xlsx.full.min.js"></script>
+    <script type="module" src="js/app.js"></script>
     
-    <script>
-        // Inicializar la aplicación cuando el DOM esté listo
-        document.addEventListener('DOMContentLoaded', function() {
-            window.agenda = new AgendaServicios();
-        });
-    </script>
+    <!-- Modal de información de servicio (detalles) -->
+    <div class="modal fade" id="infoServicioModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modal-nombre-servicio">Servicio</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                </div>
+                <div class="modal-body">
+                    <p id="modal-descripcion-servicio">Descripción</p>
+                    <p><strong>Duración:</strong> <span id="modal-duracion-servicio">N/A</span></p>
+                    <p><strong>Precio:</strong> <span id="modal-precio-servicio">N/A</span></p>
+                    <p><strong>Categoría:</strong> <span id="modal-categoria-servicio">N/A</span></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- The app module initializes the application; do not create a second instance here. -->
 </body>
 </html>

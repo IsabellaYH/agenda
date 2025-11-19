@@ -2,6 +2,8 @@
 // FUNCIONES UTILITARIAS
 // =============================================
 
+@use 'sass:color' as color;
+
 // Función para calcular contraste de color
 @function contrast-color($color) {
     @if (lightness($color) > 60) {
@@ -13,12 +15,12 @@
 
 // Función para aclarar color
 @function tint-color($color, $weight) {
-    @return mix(white, $color, $weight);
+    @return color.mix(white, $color, $weight);
 }
 
 // Función para oscurecer color
 @function shade-color($color, $weight) {
-    @return mix(black, $color, $weight);
+    @return color.mix(rgb(234, 231, 231), $color, $weight);
 }
 
 // Función para color con transparencia

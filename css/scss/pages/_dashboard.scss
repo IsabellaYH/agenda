@@ -2,6 +2,8 @@
 // PÁGINA: DASHBOARD
 // =============================================
 
+@use '../abstracts/index' as *;
+
 .estadisticas-dashboard {
     .card {
         text-align: center;

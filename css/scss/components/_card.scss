@@ -1,3 +1,9 @@
+@use '../abstracts/index' as *;
+
+// =============================================
+// COMPONENTE: CARD
+// =============================================
+@use 'sass:color' as color;
 // =============================================
 // COMPONENTE: CARDS - TEMA BLANCO
 // =============================================
@@ -45,13 +51,13 @@
     &.bg-success {
         background: $gradient-success !important;
         color: $white !important;
-        @include elegant-border(darken($success, 10%));
+        @include elegant-border(color.adjust($success, $lightness: -10%));
     }
     
     &.bg-info {
-        background: linear-gradient(135deg, $info, darken($info, 10%)) !important;
+        background: linear-gradient(135deg, $info, color.adjust($info, $lightness: -10%)) !important;
         color: $white !important;
-        @include elegant-border(darken($info, 10%));
+        @include elegant-border(color.adjust($info, $lightness: -10%));
     }
 
     // Cards con acento dorado
